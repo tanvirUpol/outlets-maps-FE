@@ -1,0 +1,1250 @@
+[
+    {
+        "label": "PACKED COMMODITY - SUJI",
+        "data": 266.67
+    },
+    {
+        "label": "PACKED COMMODITY - SUGAR REFINED",
+        "data": 10270
+    },
+    {
+        "label": "PACKED COMMODITY - SOYABEAN OIL",
+        "data": 101475.84
+    },
+    {
+        "label": "PACKED COMMODITY - SOYABEAN",
+        "data": 0
+    },
+    {
+        "label": "PACKED COMMODITY - SESAME OIL",
+        "data": 190.48
+    },
+    {
+        "label": "PACKED COMMODITY - SEED OIL",
+        "data": 0
+    },
+    {
+        "label": "PACKED COMMODITY - SALT",
+        "data": 2493.95
+    },
+    {
+        "label": "PACKED COMMODITY - RICE FLOUR",
+        "data": 380.95
+    },
+    {
+        "label": "PACKED COMMODITY - RICE BRAN OIL",
+        "data": 1960
+    },
+    {
+        "label": "PACKED COMMODITY - REGULAR RICE",
+        "data": 11670
+    },
+    {
+        "label": "PACKED COMMODITY - ORGANIC RICE",
+        "data": 0
+    },
+    {
+        "label": "PACKED COMMODITY - OLIVE OIL",
+        "data": 2114.28
+    },
+    {
+        "label": "PACKED COMMODITY - MUSTARD OIL",
+        "data": 3890.53
+    },
+    {
+        "label": "PACKED COMMODITY - MOSHUR DAL",
+        "data": 1491.41
+    },
+    {
+        "label": "PACKED COMMODITY - MOOG DAL",
+        "data": 0
+    },
+    {
+        "label": "PACKED COMMODITY - MIXED DAL",
+        "data": 0
+    },
+    {
+        "label": "PACKED COMMODITY - MAIDA",
+        "data": 1630.45
+    },
+    {
+        "label": "PACKED COMMODITY - KHICHURI MIX",
+        "data": 480
+    },
+    {
+        "label": "PACKED COMMODITY - CORN",
+        "data": 57.14
+    },
+    {
+        "label": "PACKED COMMODITY - COCONUT OIL",
+        "data": 571.43
+    },
+    {
+        "label": "PACKED COMMODITY - CHOLA",
+        "data": 414.29
+    },
+    {
+        "label": "PACKED COMMODITY - CHIA SEED",
+        "data": 0
+    },
+    {
+        "label": "PACKED COMMODITY - BROWN SUGAR",
+        "data": 0
+    },
+    {
+        "label": "PACKED COMMODITY - ATTA",
+        "data": 9760.99
+    },
+    {
+        "label": "PACKED COMMODITY - AROMATIC RICE",
+        "data": 13146
+    },
+    {
+        "label": "LOOSE COMMODITY - SUGAR REFINED",
+        "data": 2153.01
+    },
+    {
+        "label": "LOOSE COMMODITY - ROSHUN",
+        "data": 0
+    },
+    {
+        "label": "LOOSE COMMODITY - REGULAR RICE",
+        "data": 43348.46
+    },
+    {
+        "label": "LOOSE COMMODITY - PIYAJ",
+        "data": 0
+    },
+    {
+        "label": "LOOSE COMMODITY - MOSHUR DAL",
+        "data": 4382.49
+    },
+    {
+        "label": "LOOSE COMMODITY - BROWN SUGAR",
+        "data": 0
+    },
+    {
+        "label": "LOOSE COMMODITY - AROMATIC RICE",
+        "data": 5041.4
+    },
+    {
+        "label": "LOOSE COMMODITY - ALU",
+        "data": 0
+    },
+    {
+        "label": "LOOSE COMMODITY - ADA",
+        "data": 0
+    },
+    {
+        "label": " CLOTHES - WOMEN'S",
+        "data": 2784.17
+    },
+    {
+        "label": " CLOTHES - MEN'S",
+        "data": 6312.6
+    },
+    {
+        "label": " CLOTHES - LIFESTYLE ACCESSORIES",
+        "data": 723.81
+    },
+    {
+        "label": " CLOTHES - CHILDREN'S",
+        "data": 2059.36
+    },
+    {
+        "label": "LIFESTYLE ACCESSORIES - LIFESTYLE ACCESSORIES",
+        "data": 129.52
+    },
+    {
+        "label": "STATIONERIES - WATER COLOR",
+        "data": 471.45
+    },
+    {
+        "label": "STATIONERIES - STICKER BOOK",
+        "data": 0
+    },
+    {
+        "label": "STATIONERIES - SHARPENER",
+        "data": 0
+    },
+    {
+        "label": "STATIONERIES - PENCIL COLOR",
+        "data": 0
+    },
+    {
+        "label": "STATIONERIES - PENCIL BOX",
+        "data": 333.33
+    },
+    {
+        "label": "STATIONERIES - PEN",
+        "data": 96.17
+    },
+    {
+        "label": "STATIONERIES - PASTEL COLOR",
+        "data": 188.58
+    },
+    {
+        "label": "STATIONERIES - OIL PASTELS",
+        "data": 0
+    },
+    {
+        "label": "STATIONERIES - NOTE BOOK",
+        "data": 247.6
+    },
+    {
+        "label": "STATIONERIES - NAIL CLIPPER",
+        "data": 0
+    },
+    {
+        "label": "STATIONERIES - MARKER",
+        "data": 80
+    },
+    {
+        "label": "STATIONERIES - KEY RING",
+        "data": 0
+    },
+    {
+        "label": "STATIONERIES - HIGHLIGHTER",
+        "data": 0
+    },
+    {
+        "label": "STATIONERIES - GLUE",
+        "data": 29.52
+    },
+    {
+        "label": "STATIONERIES - ERASER",
+        "data": 282.87
+    },
+    {
+        "label": "STATIONERIES - COPY",
+        "data": 0
+    },
+    {
+        "label": "STATIONERIES - COLORING BOOK",
+        "data": 94.29
+    },
+    {
+        "label": "HOME APPLIANCE - TRIMMER",
+        "data": 933.33
+    },
+    {
+        "label": "HOME APPLIANCE - MEASURING SCALE",
+        "data": 761.9
+    },
+    {
+        "label": "HOME APPLIANCE - IRON",
+        "data": 0
+    },
+    {
+        "label": "HOME APPLIANCE - HEALTH & SAFETY",
+        "data": 0
+    },
+    {
+        "label": "HOME APPLIANCE - GRINDER",
+        "data": 0
+    },
+    {
+        "label": "HOME APPLIANCE - ELECTRIC KETTLE",
+        "data": 657.14
+    },
+    {
+        "label": "HOME APPLIANCE - BLENDER",
+        "data": 2489.52
+    },
+    {
+        "label": "HOME ACCESSORIES - WATER BOTTLE",
+        "data": 257.13
+    },
+    {
+        "label": "HOME ACCESSORIES - UMBRELLA",
+        "data": 365.71
+    },
+    {
+        "label": "HOME ACCESSORIES - TRAY",
+        "data": 0
+    },
+    {
+        "label": "HOME ACCESSORIES - TOWEL",
+        "data": 238.1
+    },
+    {
+        "label": "HOME ACCESSORIES - STORAGE JAR",
+        "data": 0
+    },
+    {
+        "label": "HOME ACCESSORIES - STORAGE CONTAINER",
+        "data": 207.62
+    },
+    {
+        "label": "HOME ACCESSORIES - STORAGE BOX",
+        "data": 0
+    },
+    {
+        "label": "HOME ACCESSORIES - STOOL",
+        "data": 0
+    },
+    {
+        "label": "HOME ACCESSORIES - SPOON",
+        "data": 299.05
+    },
+    {
+        "label": "HOME ACCESSORIES - SPICE BOX",
+        "data": 317.15
+    },
+    {
+        "label": "HOME ACCESSORIES - SCOURER",
+        "data": 624.76
+    },
+    {
+        "label": "HOME ACCESSORIES - PLATE",
+        "data": 57.14
+    },
+    {
+        "label": "HOME ACCESSORIES - PILLOW COVER",
+        "data": 0
+    },
+    {
+        "label": "HOME ACCESSORIES - PILLOW",
+        "data": 1237.14
+    },
+    {
+        "label": "HOME ACCESSORIES - PEELER",
+        "data": 282.87
+    },
+    {
+        "label": "HOME ACCESSORIES - NAPTHALENE",
+        "data": 580.96
+    },
+    {
+        "label": "HOME ACCESSORIES - MUG",
+        "data": 357.14
+    },
+    {
+        "label": "HOME ACCESSORIES - MOSQUITO NET",
+        "data": 284.76
+    },
+    {
+        "label": "HOME ACCESSORIES - MOP",
+        "data": 2185.71
+    },
+    {
+        "label": "HOME ACCESSORIES - MEASUREMENT CUP",
+        "data": 188.58
+    },
+    {
+        "label": "HOME ACCESSORIES - MASK",
+        "data": 400
+    },
+    {
+        "label": "HOME ACCESSORIES - LID",
+        "data": 0
+    },
+    {
+        "label": "HOME ACCESSORIES - KNIFE",
+        "data": 1219.07
+    },
+    {
+        "label": "HOME ACCESSORIES - KITCHEN APRON",
+        "data": 0
+    },
+    {
+        "label": "HOME ACCESSORIES - KARAI",
+        "data": 2417.15
+    },
+    {
+        "label": "HOME ACCESSORIES - HANGER",
+        "data": 109.52
+    },
+    {
+        "label": "HOME ACCESSORIES - GLOVES",
+        "data": 361.9
+    },
+    {
+        "label": "HOME ACCESSORIES - GARBAGE BAG",
+        "data": 228.58
+    },
+    {
+        "label": "HOME ACCESSORIES - FRY PAN",
+        "data": 333.33
+    },
+    {
+        "label": "HOME ACCESSORIES - FOIL BOX",
+        "data": 0
+    },
+    {
+        "label": "HOME ACCESSORIES - FLOOR MAT",
+        "data": 2142.86
+    },
+    {
+        "label": "HOME ACCESSORIES - FLASK",
+        "data": 1058.1
+    },
+    {
+        "label": "HOME ACCESSORIES - DRINKING GLASS",
+        "data": 1054.29
+    },
+    {
+        "label": "HOME ACCESSORIES - DISPOSABLE ITEMS",
+        "data": 47.62
+    },
+    {
+        "label": "HOME ACCESSORIES - DISH COVER",
+        "data": 0
+    },
+    {
+        "label": "HOME ACCESSORIES - CUSHION COVER",
+        "data": 0
+    },
+    {
+        "label": "HOME ACCESSORIES - CLEANING BRUSH",
+        "data": 0
+    },
+    {
+        "label": "HOME ACCESSORIES - CASSEROLE",
+        "data": 4233.33
+    },
+    {
+        "label": "HOME ACCESSORIES - BUCKET",
+        "data": 0
+    },
+    {
+        "label": "HOME ACCESSORIES - BROOM",
+        "data": 94.29
+    },
+    {
+        "label": "HOME ACCESSORIES - BOWL",
+        "data": 860.95
+    },
+    {
+        "label": "HOME ACCESSORIES - BED SHEET",
+        "data": 3993.33
+    },
+    {
+        "label": "GIFT & TOYS - WRAPPING PAPER",
+        "data": 57.14
+    },
+    {
+        "label": "GIFT & TOYS - TOY FAN",
+        "data": 189.52
+    },
+    {
+        "label": "GIFT & TOYS - TENNIS BALL",
+        "data": 471.44
+    },
+    {
+        "label": "GIFT & TOYS - SPRAY GUN",
+        "data": 914.28
+    },
+    {
+        "label": "GIFT & TOYS - SOFT DOLL",
+        "data": 94.29
+    },
+    {
+        "label": "GIFT & TOYS - SLIME",
+        "data": 623.79
+    },
+    {
+        "label": "GIFT & TOYS - REMOTE CONTROL CAR",
+        "data": 94.29
+    },
+    {
+        "label": "GIFT & TOYS - PUZZLE",
+        "data": 284.76
+    },
+    {
+        "label": "GIFT & TOYS - POP IT",
+        "data": 471.45
+    },
+    {
+        "label": "GIFT & TOYS - PLAY DOH",
+        "data": 1697.19
+    },
+    {
+        "label": "GIFT & TOYS - PLASTIC BALL",
+        "data": 284.77
+    },
+    {
+        "label": "GIFT & TOYS - PARTY ITEMS",
+        "data": 156.19
+    },
+    {
+        "label": "GIFT & TOYS - Not assigned",
+        "data": 571.43
+    },
+    {
+        "label": "GIFT & TOYS - MASK",
+        "data": 0
+    },
+    {
+        "label": "GIFT & TOYS - LUDO",
+        "data": 228.58
+    },
+    {
+        "label": "GIFT & TOYS - LASER LIGHT",
+        "data": 0
+    },
+    {
+        "label": "GIFT & TOYS - KITCHEN SET",
+        "data": 904.76
+    },
+    {
+        "label": "GIFT & TOYS - KEYRING",
+        "data": 94.29
+    },
+    {
+        "label": "GIFT & TOYS - IMPULSE TOYS",
+        "data": 0
+    },
+    {
+        "label": "GIFT & TOYS - FOOTBALL",
+        "data": 0
+    },
+    {
+        "label": "GIFT & TOYS - FAN",
+        "data": 282.87
+    },
+    {
+        "label": "GIFT & TOYS - DOLL",
+        "data": 409.52
+    },
+    {
+        "label": "GIFT & TOYS - BUBBLE STICK",
+        "data": 686.65
+    },
+    {
+        "label": "GIFT & TOYS - BARBIE DOLL",
+        "data": 285.71
+    },
+    {
+        "label": "GIFT & TOYS - BALLOON",
+        "data": 188.58
+    },
+    {
+        "label": "GIFT & TOYS - AUTO CAR",
+        "data": 1682.88
+    },
+    {
+        "label": "ELECTRONIC APPLIANCE - WATER PURIFICATION",
+        "data": 3009.52
+    },
+    {
+        "label": "ELECTRONIC APPLIANCE - TESTER",
+        "data": 0
+    },
+    {
+        "label": "ELECTRONIC APPLIANCE - TAPE",
+        "data": 0
+    },
+    {
+        "label": "ELECTRONIC APPLIANCE - MOSQUITO KILLING JAR",
+        "data": 333.33
+    },
+    {
+        "label": "ELECTRONIC APPLIANCE - MOSQUITO KILLING BAT",
+        "data": 475.24
+    },
+    {
+        "label": "ELECTRONIC APPLIANCE - LIGHT",
+        "data": 2974.28
+    },
+    {
+        "label": "ELECTRONIC APPLIANCE - FAN",
+        "data": 0
+    },
+    {
+        "label": "ELECTRONIC APPLIANCE - EARPHONE",
+        "data": 314.28
+    },
+    {
+        "label": "ELECTRONIC APPLIANCE - BATTERY",
+        "data": 1717.15
+    },
+    {
+        "label": "PROTEIN - EGG",
+        "data": 1692
+    },
+    {
+        "label": "PERSONAL CARE - WIPES & TISSUES",
+        "data": 190.48
+    },
+    {
+        "label": "PERSONAL CARE - TOOTH POWDER",
+        "data": 285.72
+    },
+    {
+        "label": "PERSONAL CARE - TOOTH PASTE",
+        "data": 20847.62
+    },
+    {
+        "label": "PERSONAL CARE - TOOTH BRUSH",
+        "data": 8079.07
+    },
+    {
+        "label": "PERSONAL CARE - SOAP",
+        "data": 17136.11
+    },
+    {
+        "label": "PERSONAL CARE - SHAVING CARE",
+        "data": 3414.29
+    },
+    {
+        "label": "PERSONAL CARE - SHAMPOO",
+        "data": 22889.53
+    },
+    {
+        "label": "PERSONAL CARE - SANITARY NAPKINS",
+        "data": 8295.31
+    },
+    {
+        "label": "PERSONAL CARE - POWDER",
+        "data": 2533.33
+    },
+    {
+        "label": "PERSONAL CARE - PERFUME",
+        "data": 876.2
+    },
+    {
+        "label": "PERSONAL CARE - ORAL ACCESSORIES",
+        "data": 200
+    },
+    {
+        "label": "PERSONAL CARE - OLIVE OIL",
+        "data": 890.48
+    },
+    {
+        "label": "PERSONAL CARE - Not assigned",
+        "data": 200
+    },
+    {
+        "label": "PERSONAL CARE - MEHEDI",
+        "data": 571.44
+    },
+    {
+        "label": "PERSONAL CARE - MEDICATED OIL",
+        "data": 223.81
+    },
+    {
+        "label": "PERSONAL CARE - MASKS & PACKS",
+        "data": 1470.47
+    },
+    {
+        "label": "PERSONAL CARE - LOTION & TONER",
+        "data": 2799.04
+    },
+    {
+        "label": "PERSONAL CARE - LIP CARE",
+        "data": 95.24
+    },
+    {
+        "label": "PERSONAL CARE - HAND WASH & SANITIZER",
+        "data": 10862.88
+    },
+    {
+        "label": "PERSONAL CARE - HAIR TREATMENT",
+        "data": 0
+    },
+    {
+        "label": "PERSONAL CARE - HAIR STYLING",
+        "data": 323.81
+    },
+    {
+        "label": "PERSONAL CARE - HAIR REMOVAL",
+        "data": 738.1
+    },
+    {
+        "label": "PERSONAL CARE - HAIR OIL",
+        "data": 11103.81
+    },
+    {
+        "label": "PERSONAL CARE - HAIR CONDITIONER",
+        "data": 747.61
+    },
+    {
+        "label": "PERSONAL CARE - HAIR COLOR",
+        "data": 157.14
+    },
+    {
+        "label": "PERSONAL CARE - FACIAL TREATMENT",
+        "data": 0
+    },
+    {
+        "label": "PERSONAL CARE - FACIAL TISSUE",
+        "data": 357.14
+    },
+    {
+        "label": "PERSONAL CARE - FACE WASH & SCRUB",
+        "data": 16729.48
+    },
+    {
+        "label": "PERSONAL CARE - DEO STICK AND ROLL ON",
+        "data": 4890.51
+    },
+    {
+        "label": "PERSONAL CARE - CREAM & MOISTURIZER",
+        "data": 11755.21
+    },
+    {
+        "label": "PERSONAL CARE - COLOUR COSMETICS",
+        "data": 0
+    },
+    {
+        "label": "PERSONAL CARE - BODY WASH & SHOWER GEL",
+        "data": 2052.38
+    },
+    {
+        "label": "PERSONAL CARE - BODY SPRAY",
+        "data": 10508.54
+    },
+    {
+        "label": "PACKAGED FOOD - WAFER",
+        "data": 4604.75
+    },
+    {
+        "label": "PACKAGED FOOD - VERMICELLI",
+        "data": 985.72
+    },
+    {
+        "label": "PACKAGED FOOD - TRADITIONAL SNACKS",
+        "data": 11272.73
+    },
+    {
+        "label": "PACKAGED FOOD - TOAST BISCUIT",
+        "data": 1738.06
+    },
+    {
+        "label": "PACKAGED FOOD - STICK ICE CREAM",
+        "data": 14204.6
+    },
+    {
+        "label": "PACKAGED FOOD - SOUP",
+        "data": 5152.43
+    },
+    {
+        "label": "PACKAGED FOOD - READY MEAL",
+        "data": 266.66
+    },
+    {
+        "label": "PACKAGED FOOD - POPCORN",
+        "data": 1442.9
+    },
+    {
+        "label": "PACKAGED FOOD - PASTA",
+        "data": 6852.38
+    },
+    {
+        "label": "PACKAGED FOOD - OATS & MUESLI",
+        "data": 5360.95
+    },
+    {
+        "label": "PACKAGED FOOD - Not assigned",
+        "data": 428.55
+    },
+    {
+        "label": "PACKAGED FOOD - NUTS",
+        "data": 3942.89
+    },
+    {
+        "label": "PACKAGED FOOD - NOODLES",
+        "data": 28481.17
+    },
+    {
+        "label": "PACKAGED FOOD - MIXED SPREAD",
+        "data": 7833.34
+    },
+    {
+        "label": "PACKAGED FOOD - MAYONNAISE",
+        "data": 1509.54
+    },
+    {
+        "label": "PACKAGED FOOD - MANGO BAR",
+        "data": 666.68
+    },
+    {
+        "label": "PACKAGED FOOD - LACHA SHEMAI",
+        "data": 1419.07
+    },
+    {
+        "label": "PACKAGED FOOD - JELLY",
+        "data": 1385.73
+    },
+    {
+        "label": "PACKAGED FOOD - JAM",
+        "data": 1897.62
+    },
+    {
+        "label": "PACKAGED FOOD - ICE CREAM CUP",
+        "data": 5100.03
+    },
+    {
+        "label": "PACKAGED FOOD - ICE CREAM CONTAINER/ PARTY BOX",
+        "data": 12641.3
+    },
+    {
+        "label": "PACKAGED FOOD - HONEY",
+        "data": 7666.65
+    },
+    {
+        "label": "PACKAGED FOOD - GUM",
+        "data": 228.57
+    },
+    {
+        "label": "PACKAGED FOOD - FROZEN FOOD",
+        "data": 71356.59
+    },
+    {
+        "label": "PACKAGED FOOD - DRY FRUIT",
+        "data": 0
+    },
+    {
+        "label": "PACKAGED FOOD - DRY CAKE",
+        "data": 3128.54
+    },
+    {
+        "label": "PACKAGED FOOD - DIGESTIVES",
+        "data": 533.33
+    },
+    {
+        "label": "PACKAGED FOOD - CRACKERS",
+        "data": 8909.7
+    },
+    {
+        "label": "PACKAGED FOOD - CORNFLAKES",
+        "data": 11441.68
+    },
+    {
+        "label": "PACKAGED FOOD - COOKIES",
+        "data": 31085.81
+    },
+    {
+        "label": "PACKAGED FOOD - CHOCOLATE",
+        "data": 13223.92
+    },
+    {
+        "label": "PACKAGED FOOD - CHIPS",
+        "data": 10457.31
+    },
+    {
+        "label": "PACKAGED FOOD - CHANACHUR",
+        "data": 5714.18
+    },
+    {
+        "label": "PACKAGED FOOD - CANNED VEGETABLE",
+        "data": 513.34
+    },
+    {
+        "label": "PACKAGED FOOD - CANNED FRUIT",
+        "data": 0
+    },
+    {
+        "label": "PACKAGED FOOD - CANNED FISH",
+        "data": 457.14
+    },
+    {
+        "label": "PACKAGED FOOD - CANDY",
+        "data": 580.95
+    },
+    {
+        "label": "PACKAGED FOOD - CAKE",
+        "data": 399.99
+    },
+    {
+        "label": "PACKAGED FOOD - BAKERKHANI",
+        "data": 0
+    },
+    {
+        "label": "PACKAGED FOOD - ASSORTED BISCUIT",
+        "data": 523.81
+    },
+    {
+        "label": "PACKAGED FOOD - ARTIFICIAL SWEETENER",
+        "data": 971.43
+    },
+    {
+        "label": "KITCHEN ADDITIVE - YEAST",
+        "data": 942.84
+    },
+    {
+        "label": "KITCHEN ADDITIVE - WHOLE SPICE",
+        "data": 10770.99
+    },
+    {
+        "label": "KITCHEN ADDITIVE - SYRUP",
+        "data": 0
+    },
+    {
+        "label": "KITCHEN ADDITIVE - STOCK",
+        "data": 47.62
+    },
+    {
+        "label": "KITCHEN ADDITIVE - SPICE PASTE",
+        "data": 0
+    },
+    {
+        "label": "KITCHEN ADDITIVE - SEASONING SALT",
+        "data": 1224.75
+    },
+    {
+        "label": "KITCHEN ADDITIVE - SEASONING MIX",
+        "data": 985.69
+    },
+    {
+        "label": "KITCHEN ADDITIVE - PICKLE",
+        "data": 1352.38
+    },
+    {
+        "label": "KITCHEN ADDITIVE - MIXED SPICE",
+        "data": 5019.02
+    },
+    {
+        "label": "KITCHEN ADDITIVE - JELLY POWDER",
+        "data": 1557.14
+    },
+    {
+        "label": "KITCHEN ADDITIVE - ICING SUGAR",
+        "data": 157.14
+    },
+    {
+        "label": "KITCHEN ADDITIVE - FOOD COLOR",
+        "data": 757.13
+    },
+    {
+        "label": "KITCHEN ADDITIVE - ESSENCE",
+        "data": 1769.49
+    },
+    {
+        "label": "KITCHEN ADDITIVE - DIPPING SAUCE",
+        "data": 7542.81
+    },
+    {
+        "label": "KITCHEN ADDITIVE - DESSERT MIX",
+        "data": 1519.04
+    },
+    {
+        "label": "KITCHEN ADDITIVE - CUSTARD POWDER",
+        "data": 847.61
+    },
+    {
+        "label": "KITCHEN ADDITIVE - CORNFLOUR",
+        "data": 804.76
+    },
+    {
+        "label": "KITCHEN ADDITIVE - COOKING SAUCE",
+        "data": 5433.35
+    },
+    {
+        "label": "KITCHEN ADDITIVE - COCOA POWDER",
+        "data": 942.86
+    },
+    {
+        "label": "KITCHEN ADDITIVE - CHUTNEY",
+        "data": 723.82
+    },
+    {
+        "label": "KITCHEN ADDITIVE - CAKE MIX",
+        "data": 619.05
+    },
+    {
+        "label": "KITCHEN ADDITIVE - CAKE DECORATION",
+        "data": 742.86
+    },
+    {
+        "label": "KITCHEN ADDITIVE - BREAD CRUMB",
+        "data": 114.29
+    },
+    {
+        "label": "KITCHEN ADDITIVE - BASIC SPICE",
+        "data": 10187.48
+    },
+    {
+        "label": "KITCHEN ADDITIVE - BAKING POWDER",
+        "data": 552.39
+    },
+    {
+        "label": "KITCHEN ADDITIVE - BAKING FLOUR",
+        "data": 242.85
+    },
+    {
+        "label": "HOME CARE - TOILET TISSUE",
+        "data": 966.69
+    },
+    {
+        "label": "HOME CARE - TOILET CLEANER",
+        "data": 8032.84
+    },
+    {
+        "label": "HOME CARE - SCOURER",
+        "data": 342.84
+    },
+    {
+        "label": "HOME CARE - NAPKIN TISSUE",
+        "data": 2980.97
+    },
+    {
+        "label": "HOME CARE - MOSQUITO VAPORISER",
+        "data": 464.75
+    },
+    {
+        "label": "HOME CARE - MOSQUITO SPRAY",
+        "data": 1980
+    },
+    {
+        "label": "HOME CARE - MOSQUITO ROLL ON",
+        "data": 361.9
+    },
+    {
+        "label": "HOME CARE - MOSQUITO POWDER",
+        "data": 209.52
+    },
+    {
+        "label": "HOME CARE - MOSQUITO COIL",
+        "data": 2080.98
+    },
+    {
+        "label": "HOME CARE - KITCHEN TISSUE",
+        "data": 923.81
+    },
+    {
+        "label": "HOME CARE - KITCHEN ACCESSORIES",
+        "data": 952.39
+    },
+    {
+        "label": "HOME CARE - JHARU",
+        "data": 704.75
+    },
+    {
+        "label": "HOME CARE - INSECT SPRAY",
+        "data": 2438.12
+    },
+    {
+        "label": "HOME CARE - INSECT POWDER",
+        "data": 228.6
+    },
+    {
+        "label": "HOME CARE - ILLUMINATOR",
+        "data": 0
+    },
+    {
+        "label": "HOME CARE - GLASS CLEANER",
+        "data": 133.33
+    },
+    {
+        "label": "HOME CARE - GARBAGE BAGS",
+        "data": 0
+    },
+    {
+        "label": "HOME CARE - FLUSH CLEANER",
+        "data": 361.91
+    },
+    {
+        "label": "HOME CARE - FLOOR CLEANER",
+        "data": 1585.71
+    },
+    {
+        "label": "HOME CARE - FACIAL TISSUE",
+        "data": 238.1
+    },
+    {
+        "label": "HOME CARE - FABRIC IMPROVEMENT",
+        "data": 152.37
+    },
+    {
+        "label": "HOME CARE - FABRIC BLEACH",
+        "data": 0
+    },
+    {
+        "label": "HOME CARE - DISH CLEANER",
+        "data": 8812.51
+    },
+    {
+        "label": "HOME CARE - DETERGENT",
+        "data": 20128.64
+    },
+    {
+        "label": "HOME CARE - CAR AIR FRESHNER",
+        "data": 928.56
+    },
+    {
+        "label": "HOME CARE - BATHROOM CLEANER",
+        "data": 252.37
+    },
+    {
+        "label": "HOME CARE - AIR FRESHENER",
+        "data": 10442.87
+    },
+    {
+        "label": "DAIRY - YOGURT",
+        "data": 1333.36
+    },
+    {
+        "label": "DAIRY - PROCESSED MILK",
+        "data": 714.3
+    },
+    {
+        "label": "DAIRY - PASTEURIZED MILK",
+        "data": 3266.65
+    },
+    {
+        "label": "DAIRY - MARGARINE",
+        "data": 0
+    },
+    {
+        "label": "DAIRY - LIQUID UHT MILK",
+        "data": 8341.92
+    },
+    {
+        "label": "DAIRY - INSTANT DAIRY DRINK",
+        "data": 1352.34
+    },
+    {
+        "label": "DAIRY - GHEE",
+        "data": 2466.68
+    },
+    {
+        "label": "DAIRY - CHEESE",
+        "data": 809.55
+    },
+    {
+        "label": "DAIRY - BUTTER OIL",
+        "data": 290.48
+    },
+    {
+        "label": "DAIRY - BUTTER",
+        "data": 3042.86
+    },
+    {
+        "label": "DAIRY - ADULT POWDER MILK",
+        "data": 65842.27
+    },
+    {
+        "label": "BEVERAGE & TOBACCO - SOFT DRINKS",
+        "data": 11752.56
+    },
+    {
+        "label": "BEVERAGE & TOBACCO - SODA WATER",
+        "data": 342.88
+    },
+    {
+        "label": "BEVERAGE & TOBACCO - MINERAL WATER",
+        "data": 514.29
+    },
+    {
+        "label": "BEVERAGE & TOBACCO - MALT DRINK POWDER",
+        "data": 12847.66
+    },
+    {
+        "label": "BEVERAGE & TOBACCO - JUNIOR MALT DRINK POWDER",
+        "data": 3066.69
+    },
+    {
+        "label": "BEVERAGE & TOBACCO - JUICE FRUIT",
+        "data": 11866.6
+    },
+    {
+        "label": "BEVERAGE & TOBACCO - JUICE CONCENTRATED",
+        "data": 342.86
+    },
+    {
+        "label": "BEVERAGE & TOBACCO - INSTANT DRINK POWDER",
+        "data": 8957.12
+    },
+    {
+        "label": "BEVERAGE & TOBACCO - GREEN TEA",
+        "data": 4576.12
+    },
+    {
+        "label": "BEVERAGE & TOBACCO - FLAVOR TEA",
+        "data": 0
+    },
+    {
+        "label": "BEVERAGE & TOBACCO - DRINKING WATER",
+        "data": 822.9
+    },
+    {
+        "label": "BEVERAGE & TOBACCO - COFFEE MIX",
+        "data": 600.01
+    },
+    {
+        "label": "BEVERAGE & TOBACCO - COFFEE INSTANT",
+        "data": 5685.68
+    },
+    {
+        "label": "BEVERAGE & TOBACCO - COFFEE CREAMER",
+        "data": 619.04
+    },
+    {
+        "label": "BEVERAGE & TOBACCO - BLACK TEA",
+        "data": 12159.51
+    },
+    {
+        "label": "BEVERAGE & TOBACCO - BHUSHI",
+        "data": 2159.02
+    },
+    {
+        "label": "BABY FOOD - INFANT FORMULA",
+        "data": 3476.21
+    },
+    {
+        "label": "BABY FOOD - BABY FULL CREAM MILK",
+        "data": 7966.18
+    },
+    {
+        "label": "BABY FOOD - BABY CEREAL MIXED",
+        "data": 0
+    },
+    {
+        "label": "BABY FOOD - BABY CEREAL FRUIT",
+        "data": 3395.25
+    },
+    {
+        "label": "BABY FOOD - BABY CEREAL CROP",
+        "data": 3757.11
+    },
+    {
+        "label": "BABY CARE - WIPES",
+        "data": 1052.39
+    },
+    {
+        "label": "BABY CARE - MOTHER'S ACCESSORIES",
+        "data": 0
+    },
+    {
+        "label": "BABY CARE - GROOMING ACCESSORIES",
+        "data": 1387.61
+    },
+    {
+        "label": "BABY CARE - BABY TOOTH PASTE",
+        "data": 223.81
+    },
+    {
+        "label": "BABY CARE - BABY SKIN CARE",
+        "data": 10786.93
+    },
+    {
+        "label": "BABY CARE - BABY ORAL CARE",
+        "data": 2661.9
+    },
+    {
+        "label": "BABY CARE - BABY HAIR CARE",
+        "data": 1678.1
+    },
+    {
+        "label": "BABY CARE - BABY FEEDER AND FEEDING ACCESSORIES",
+        "data": 2643.8
+    },
+    {
+        "label": "BABY CARE - BABY DIAPER SNAP-ON",
+        "data": 436.19
+    },
+    {
+        "label": "BABY CARE - BABY DIAPER PANT",
+        "data": 3894.29
+    },
+    {
+        "label": "BABY CARE - BABY CLOTHING",
+        "data": 518.1
+    },
+    {
+        "label": "BABY CARE - BABY CLEANING ACCESSORIES",
+        "data": 265.71
+    }
+]
