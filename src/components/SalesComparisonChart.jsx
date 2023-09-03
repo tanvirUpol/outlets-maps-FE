@@ -8,7 +8,7 @@ Chart.register(zoomPlugin, ChartDataLabels);
 
 
 
-const SalesComparisonChart = ({ data }) => {
+const SalesComparisonChart = ({ data ,selectedMetric}) => {
     const [chartClick, setChartClick] = useState(0);
     const [labelVal, setLabelVal] = useState("Master Category");
     const chartRef = useRef();
@@ -106,25 +106,25 @@ const SalesComparisonChart = ({ data }) => {
 
     const calculateSalesByCategoryTop = (category) => {
         const categoryItems = data.filter(item => item.master_category === category);
-        const totalSales = categoryItems.reduce((sum, item) => sum + item.sales_this, 0);
+        const totalSales = categoryItems.reduce((sum, item) => sum + item[selectedMetric + "_this"], 0);
         return totalSales.toFixed(2);
     };
 
     const calculateSalesByCategoryMid = (category) => {
         const categoryItems = data.filter(item => item.cat_1 === category);
-        const totalSales = categoryItems.reduce((sum, item) => sum + item.sales_this, 0);
-        console.log(totalSales);
+        const totalSales = categoryItems.reduce((sum, item) => sum + item[selectedMetric + "_this"], 0);
+        // console.log(totalSales);
         return totalSales.toFixed(2);
     };
 
     const calculateSalesByCategoryLow = (category) => {
         const categoryItems = data.filter(item => item.cat_3 === category);
-        const totalSales = categoryItems.reduce((sum, item) => sum + item.sales_this, 0);
+        const totalSales = categoryItems.reduce((sum, item) => sum + item[selectedMetric + "_this"], 0);
         return totalSales.toFixed(2);
     };
 
     let result = {};
-    let finalResult = {};
+
 
     const TopLayer = () => {
 
@@ -141,9 +141,7 @@ const SalesComparisonChart = ({ data }) => {
 
     const MidLayer = (indexVal) => {
         const selectedMasterCategory = indexVal
-        // const selectedMasterCategory = "FRESH PRODUCE"
-
-        // console.log(index);
+    
 
         const customCat1 = [...new Set(data.filter(item => item.master_category === selectedMasterCategory).map(item => item.cat_1))];
 
@@ -157,7 +155,7 @@ const SalesComparisonChart = ({ data }) => {
 
     const LowLayer = (indexVal) => {
         const selectedCat1Category = indexVal
-        // const selectedMasterCategory = "FRESH PRODUCE"
+        
 
         const customCat3 = [...new Set(data.filter(item => item.cat_1 === selectedCat1Category).map(item => item.cat_3))];
 
@@ -171,14 +169,14 @@ const SalesComparisonChart = ({ data }) => {
 
 
     if (chartClick == 0) {
-        console.log("top called");
+        // console.log("top called");
         TopLayer()
 
     } else if (chartClick == 1) {
-        console.log("Mid called");
+        // console.log("Mid called");
         MidLayer(labelVal)
     } else if (chartClick == 2) {
-        console.log("Low called");
+        // console.log("Low called");
         LowLayer(labelVal)
     }
 
