@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const DataTables = ({ data, growth, selectedMetric }) => {
-//   console.log(selectedMetric);
+  //   console.log(selectedMetric);
   const [expandedMaster, setExpandedMaster] = useState("");
   const [expandedCat1, setExpandedCat1] = useState("");
 
@@ -21,14 +21,15 @@ const DataTables = ({ data, growth, selectedMetric }) => {
     }
   };
 
-  const getMasterSales = (masterCategory, field) => {
+  const getMasterVals = (masterCategory, field) => {
     const cat1Items = data.filter(
       (item) => item["master_category"] === masterCategory
     );
     return cat1Items.reduce((sum, item) => sum + item[field], 0);
   };
 
-  const getCat1Sales = (cat1category, field) => {
+
+  const getCat1Vals = (cat1category, field) => {
     const cat1Items = data.filter((item) => item["cat_1"] === cat1category);
     return cat1Items.reduce((sum, item) => sum + item[field], 0);
   };
@@ -40,6 +41,40 @@ const DataTables = ({ data, growth, selectedMetric }) => {
     }
     return 0;
   };
+
+
+
+  // const MasterCat = data.reduce((uniqueMasters, item) => {
+  //   if (!uniqueMasters.includes(item["master_category"])) {
+  //     uniqueMasters.push(item["master_category"]);
+  //   }
+  //   return uniqueMasters;
+  // }, [])
+
+  // MasterCat.map((masterCategory,index) => (
+
+  //   data.filter(
+  //     (item) =>
+  //       item["master_category"] === masterCategory
+  //   )
+  //   .reduce((uniqueCat1, subItem) => {
+  //     if (
+  //       !uniqueCat1.includes(subItem["cat_1"])
+  //     ) {
+  //       uniqueCat1.push(subItem["cat_1"]);
+  //     }
+  //     return uniqueCat1;
+  //   }, []).map((subItem, subIndex) => (
+  //     console.log(subItem)
+  //   ))
+
+  // ))
+
+  // console.log(x);
+
+  
+
+
   return (
     <>
       <table className="mb-16 min-w-full shadow-sm">
@@ -71,44 +106,43 @@ const DataTables = ({ data, growth, selectedMetric }) => {
               <React.Fragment key={index}>
                 {growth == "degrowth" &&
                   calculateGrowthPercentage(
-                    getMasterSales(masterCategory, selectedMetric + "_this"),
-                    getMasterSales(masterCategory, selectedMetric + "_last")
+                    getMasterVals(masterCategory, selectedMetric + "_this"),
+                    getMasterVals(masterCategory, selectedMetric + "_last")
                   ) < 0 && (
                     <React.Fragment key={index}>
                       <tr
-                        className={`cursor-pointer text-xs transition-colors hover:bg-gray-50 sm:text-base ${
-                          expandedMaster === masterCategory ? "bg-gray-50" : ""
-                        }`}
+                        className={`cursor-pointer text-xs transition-colors hover:bg-gray-50 sm:text-base ${expandedMaster === masterCategory ? "bg-gray-50" : ""
+                          }`}
                         onClick={() => toggleMaster(masterCategory)}
                       >
                         <td className="px-4 py-4">
                           <button
                             onClick={() => toggleMaster(masterCategory)}
-                            className="mr-2 focus:outline-none"
+                            className="mr-2 focus:outline-none font-medium text-base"
                           >
                             {expandedMaster === masterCategory ? "-" : "+"}
                           </button>
                           {masterCategory}
                         </td>
                         <td className="px-4 py-4">
-                          {getMasterSales(
+                          {getMasterVals(
                             masterCategory,
                             selectedMetric + "_this"
                           ).toFixed(2)}
                         </td>
                         <td className="px-4 py-4">
-                          {getMasterSales(
+                          {getMasterVals(
                             masterCategory,
                             selectedMetric + "_last"
                           ).toFixed(2)}
                         </td>
                         <td className="px-4 py-4">
                           {calculateGrowthPercentage(
-                            getMasterSales(
+                            getMasterVals(
                               masterCategory,
                               selectedMetric + "_this"
                             ),
-                            getMasterSales(
+                            getMasterVals(
                               masterCategory,
                               selectedMetric + "_last"
                             )
@@ -119,7 +153,7 @@ const DataTables = ({ data, growth, selectedMetric }) => {
                       {expandedMaster === masterCategory && (
                         <tr>
                           <td colSpan="4" className="py-4">
-                            <table className="w-full">
+                            <table className="w-full shadow-md">
                               <thead>
                                 <tr className="bg-emerald-500">
                                   <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white">
@@ -153,11 +187,10 @@ const DataTables = ({ data, growth, selectedMetric }) => {
                                   .map((subItem, subIndex) => (
                                     <React.Fragment key={subIndex}>
                                       <tr
-                                        className={`cursor-pointer transition-colors hover:bg-gray-50 ${
-                                          expandedCat1 === subItem
-                                            ? "bg-gray-50"
-                                            : ""
-                                        }`}
+                                        className={`cursor-pointer transition-colors hover:bg-gray-50 ${expandedCat1 === subItem
+                                          ? "bg-gray-50"
+                                          : ""
+                                          }`}
                                         onClick={() => toggleCat1(subItem)}
                                       >
                                         <td className="px-4 py-4">
@@ -172,24 +205,24 @@ const DataTables = ({ data, growth, selectedMetric }) => {
                                           {subItem}
                                         </td>
                                         <td className="px-4 py-4">
-                                          {getCat1Sales(
+                                          {getCat1Vals(
                                             subItem,
                                             selectedMetric + "_this"
                                           ).toFixed(2)}
                                         </td>
                                         <td className="px-4 py-4">
-                                          {getCat1Sales(
+                                          {getCat1Vals(
                                             subItem,
                                             selectedMetric + "_last"
                                           ).toFixed(2)}
                                         </td>
                                         <td className="px-4 py-4">
                                           {calculateGrowthPercentage(
-                                            getCat1Sales(
+                                            getCat1Vals(
                                               subItem,
                                               selectedMetric + "_this"
                                             ),
-                                            getCat1Sales(
+                                            getCat1Vals(
                                               subItem,
                                               selectedMetric + "_last"
                                             )
@@ -235,28 +268,28 @@ const DataTables = ({ data, growth, selectedMetric }) => {
                                                         <td className="px-4 py-4 ">
                                                           {
                                                             cat3Item[
-                                                              selectedMetric +
-                                                                "_this"
+                                                            selectedMetric +
+                                                            "_this"
                                                             ]
                                                           }
                                                         </td>
                                                         <td className="px-4 py-4 ">
                                                           {
                                                             cat3Item[
-                                                              selectedMetric +
-                                                                "_last"
+                                                            selectedMetric +
+                                                            "_last"
                                                             ]
                                                           }
                                                         </td>
                                                         <td className="px-4 py-4 ">
                                                           {calculateGrowthPercentage(
                                                             cat3Item[
-                                                              selectedMetric +
-                                                                "_this"
+                                                            selectedMetric +
+                                                            "_this"
                                                             ],
                                                             cat3Item[
-                                                              selectedMetric +
-                                                                "_last"
+                                                            selectedMetric +
+                                                            "_last"
                                                             ]
                                                           )}
                                                           %
@@ -278,46 +311,48 @@ const DataTables = ({ data, growth, selectedMetric }) => {
                       )}
                     </React.Fragment>
                   )}
+
+
+
                 {growth == "growth" &&
                   calculateGrowthPercentage(
-                    getMasterSales(masterCategory, "sales_this"),
-                    getMasterSales(masterCategory, "sales_last")
+                    getMasterVals(masterCategory, selectedMetric + "_this"),
+                    getMasterVals(masterCategory, selectedMetric + "_last")
                   ) >= 0 && (
                     <React.Fragment key={index}>
                       <tr
-                        className={`cursor-pointer text-xs transition-colors hover:bg-gray-50 sm:text-base ${
-                          expandedMaster === masterCategory ? "bg-gray-50" : ""
-                        }`}
+                        className={`cursor-pointer text-xs transition-colors hover:bg-gray-50 sm:text-base ${expandedMaster === masterCategory ? "bg-gray-50" : ""
+                          }`}
                         onClick={() => toggleMaster(masterCategory)}
                       >
                         <td className="px-4 py-4">
                           <button
                             onClick={() => toggleMaster(masterCategory)}
-                            className="mr-2 focus:outline-none"
+                            className="mr-2 focus:outline-none font-medium text-base"
                           >
                             {expandedMaster === masterCategory ? "-" : "+"}
                           </button>
                           {masterCategory}
                         </td>
                         <td className="px-4 py-4">
-                          {getMasterSales(
+                          {getMasterVals(
                             masterCategory,
                             selectedMetric + "_this"
                           ).toFixed(2)}
                         </td>
                         <td className="px-4 py-4">
-                          {getMasterSales(
+                          {getMasterVals(
                             masterCategory,
                             selectedMetric + "_last"
                           ).toFixed(2)}
                         </td>
                         <td className="px-4 py-4">
                           {calculateGrowthPercentage(
-                            getMasterSales(
+                            getMasterVals(
                               masterCategory,
                               selectedMetric + "_this"
                             ),
-                            getMasterSales(
+                            getMasterVals(
                               masterCategory,
                               selectedMetric + "_last"
                             )
@@ -362,11 +397,10 @@ const DataTables = ({ data, growth, selectedMetric }) => {
                                   .map((subItem, subIndex) => (
                                     <React.Fragment key={subIndex}>
                                       <tr
-                                        className={`cursor-pointer transition-colors hover:bg-gray-50 ${
-                                          expandedCat1 === subItem
-                                            ? "bg-gray-50"
-                                            : ""
-                                        }`}
+                                        className={`cursor-pointer transition-colors hover:bg-gray-50 ${expandedCat1 === subItem
+                                          ? "bg-gray-50"
+                                          : ""
+                                          }`}
                                         onClick={() => toggleCat1(subItem)}
                                       >
                                         <td className="px-4 py-4">
@@ -381,24 +415,24 @@ const DataTables = ({ data, growth, selectedMetric }) => {
                                           {subItem}
                                         </td>
                                         <td className="px-4 py-4">
-                                          {getCat1Sales(
+                                          {getCat1Vals(
                                             subItem,
                                             selectedMetric + "_this"
                                           ).toFixed(2)}
                                         </td>
                                         <td className="px-4 py-4">
-                                          {getCat1Sales(
+                                          {getCat1Vals(
                                             subItem,
                                             selectedMetric + "_last"
                                           ).toFixed(2)}
                                         </td>
                                         <td className="px-4 py-4">
                                           {calculateGrowthPercentage(
-                                            getCat1Sales(
+                                            getCat1Vals(
                                               subItem,
                                               selectedMetric + "_this"
                                             ),
-                                            getCat1Sales(
+                                            getCat1Vals(
                                               subItem,
                                               selectedMetric + "_last"
                                             )
@@ -444,28 +478,28 @@ const DataTables = ({ data, growth, selectedMetric }) => {
                                                         <td className="px-4 py-4 ">
                                                           {
                                                             cat3Item[
-                                                              selectedMetric +
-                                                                "_this"
+                                                            selectedMetric +
+                                                            "_this"
                                                             ]
                                                           }
                                                         </td>
                                                         <td className="px-4 py-4 ">
                                                           {
                                                             cat3Item[
-                                                              selectedMetric +
-                                                                "_last"
+                                                            selectedMetric +
+                                                            "_last"
                                                             ]
                                                           }
                                                         </td>
                                                         <td className="px-4 py-4 ">
                                                           {calculateGrowthPercentage(
                                                             cat3Item[
-                                                              selectedMetric +
-                                                                "_this"
+                                                            selectedMetric +
+                                                            "_this"
                                                             ],
                                                             cat3Item[
-                                                              selectedMetric +
-                                                                "_last"
+                                                            selectedMetric +
+                                                            "_last"
                                                             ]
                                                           )}
                                                           %
