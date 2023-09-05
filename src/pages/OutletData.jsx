@@ -6,18 +6,38 @@ import Loading from "../components/Loading";
 import SalesComparisonChart from "../components/SalesComparisonChart";
 import DataTables from "../components/DataTables";
 
+
+import DataTable from "../components/DataTable";
+
 const OutletData = () => {
   const [data, setData] = useState([]);
   const api_url = import.meta.env.VITE_REACT_APP_API_URL;
   const { user } = useAuthContext();
   const { id } = useParams();
-  const [selectedMetric, setSelectedMetric] = useState('sales');
+  const [selectedMetric, setSelectedMetric] = useState("sales");
   const [masterCategoryData, setMasterCategoryData] = useState([]);
   const [cat3Data, setCat3Data] = useState([]);
   const [cat1Data, setCat1Data] = useState([]);
 
 
 
+
+  // Define a function to trim object
+  const trimObjectValues = (obj) => {
+    const trimmedObj = {};
+    // console.log(obj);
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        // console.log(obj[key]);
+        if (typeof obj[key] === "string") {
+          trimmedObj[key] = obj[key].trim();
+        } else {
+          trimmedObj[key] = obj[key];
+        }
+      }
+    }
+    return trimmedObj;
+  };
 
   // Fetch data from the API
   useEffect(() => {
@@ -32,7 +52,9 @@ const OutletData = () => {
 
         if (response.ok) {
           console.log(json);
-          setData(json);
+          const trimmedData = json.map((item) => trimObjectValues(item));
+          console.log(trimmedData);
+          setData(trimmedData);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -42,7 +64,6 @@ const OutletData = () => {
       fetchData();
     }
   }, []);
-
 
   // new code starts here
 
@@ -57,7 +78,17 @@ const OutletData = () => {
         } else {
           // Sum the corresponding values for each category excluding 'cat_1', 'cat_3', 'master_category', and 'zonal'
           for (const key in item) {
-            if (key !== category && key !== 'cat_1' && key !== 'cat_3' && key !== 'master_category' && key !== 'zonal'  && key !== 'name' && key !== 'format' && key !== 'outlet_code' && key !== '_id') {
+            if (
+              key !== category &&
+              key !== "cat_1" &&
+              key !== "cat_3" &&
+              key !== "master_category" &&
+              key !== "zonal" &&
+              key !== "name" &&
+              key !== "format" &&
+              key !== "outlet_code" &&
+              key !== "_id"
+            ) {
               aggregatedData[categoryValue][key] += item[key];
             }
           }
@@ -67,7 +98,7 @@ const OutletData = () => {
     };
 
     // Aggregate data for 'Master Category'
-    const masterCategoryAggregated = aggregateData('master_category');
+    const masterCategoryAggregated = aggregateData("master_category");
     const filteredMasterCategoryData = masterCategoryAggregated.map((item) => {
       const { cat_1, cat_3, ...rest } = item;
       return { ...rest };
@@ -75,7 +106,7 @@ const OutletData = () => {
     setMasterCategoryData(filteredMasterCategoryData);
 
     // Aggregate data for 'CAT_3'
-    const cat3Aggregated = aggregateData('cat_3');
+    const cat3Aggregated = aggregateData("cat_3");
     const filteredCat1Data = cat3Aggregated.map((item) => {
       const { cat_3, ...rest } = item;
       return { ...rest };
@@ -83,18 +114,9 @@ const OutletData = () => {
     setCat3Data(filteredCat1Data);
 
     // Aggregate data for 'CAT_1'
-    const cat1Aggregated = aggregateData('cat_1');
+    const cat1Aggregated = aggregateData("cat_1");
     setCat1Data(cat1Aggregated);
   }, [data]);
-
-
-  
-
-
-  useEffect(() => {
-    console.log(masterCategoryData);
-  }, [masterCategoryData]);
-
 
   // new code end
 
@@ -121,7 +143,6 @@ const OutletData = () => {
   const averageBasketSizeLast =
     data?.reduce((sum, item) => sum + item["bs_last"], 0) / data.length;
 
-
   const calculateGrowthPercentage = (currentValue, lastValue) => {
     if (lastValue !== 0) {
       const growthPercentage = ((currentValue - lastValue) / lastValue) * 100;
@@ -129,7 +150,6 @@ const OutletData = () => {
     }
     return 0;
   };
-
 
   // Calculate total sales for each product
   const productSales = {};
@@ -143,29 +163,21 @@ const OutletData = () => {
     }
   });
 
-
-  const [bestSellingProduct,setBestSellingProduct] = useState("")
-  const [worstSellingProduct,setWorstSellingProduct] = useState("")
-  const [maxSales,setMaxSales] = useState(-Infinity)
-  const [minSales,setMinSales] = useState(Infinity)
+  const [bestSellingProduct, setBestSellingProduct] = useState("");
+  const [worstSellingProduct, setWorstSellingProduct] = useState("");
+  const [maxSales, setMaxSales] = useState(-Infinity);
+  const [minSales, setMinSales] = useState(Infinity);
 
   for (const product in productSales) {
     if (productSales[product] > maxSales) {
-      setMaxSales(productSales[product])
+      setMaxSales(productSales[product]);
       setBestSellingProduct(product);
     }
     if (productSales[product] < minSales) {
-      setMinSales(productSales[product])
+      setMinSales(productSales[product]);
       setWorstSellingProduct(product);
     }
   }
-
-
-
-
-
-
-
 
   const numFor = Intl.NumberFormat("en-US");
 
@@ -204,26 +216,19 @@ const OutletData = () => {
           )}
         />
         <div href="#" className="block cursor-pointer mx-1 w-full p-5 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
-                <h5 className="mb-1 text-sm lg:text-lg font-bold tracking-tight text-gray-600">Best Selling Product</h5>
-                <p className="mb-1 font-semibold text-gray-950 text-lg lg:text-2xl">{ numFor.format( Math.round(maxSales) )}</p>
-                <p className="mb-1 font-semibold text-green-600 text-xs">{bestSellingProduct}</p>
-              
-          </div>
-        {/* <div href="#" className="block cursor-pointer mx-1 w-full p-5 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
-                <h5 className="mb-1 text-sm lg:text-lg font-bold tracking-tight text-gray-600">Worst Selling Product</h5>
-                <p className="mb-1 font-semibold text-gray-950 text-lg lg:text-2xl">{ numFor.format( Math.round(minSales) )}</p>
-                <p className="mb-1 font-semibold text-green-600 text-xs">{worstSellingProduct}</p>
-              
-          </div> */}
+          <h5 className="mb-1 text-sm lg:text-lg font-bold tracking-tight text-gray-600">Best Selling Product</h5>
+          <p className="mb-1 font-semibold text-gray-950 text-lg lg:text-2xl">{numFor.format(Math.round(maxSales))}</p>
+          <p className="mb-1 font-semibold text-green-600 text-xs">{bestSellingProduct}</p>
+        </div>
       </div>
 
       <div className="">
-        <div className="flex justify-start items-center gap-2">
+        <div className="flex items-center justify-start gap-2">
           <h1>Filter By:</h1>
           <select
             value={selectedMetric}
             onChange={(e) => setSelectedMetric(e.target.value)}
-            className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-44  p-3 text-sm font-medium"
+            className="block w-44 rounded-lg border border-gray-300 bg-gray-50 p-3 text-sm font-medium  text-gray-900 focus:border-blue-500 focus:ring-blue-500"
           >
             <option value="bs">Basket Size</option>
             <option value="sales">Sales</option>
@@ -231,10 +236,13 @@ const OutletData = () => {
           </select>
         </div>
 
-        <h1 className="text-xl font-bold my-4 text-rose-600" >Degrowth Table</h1>
-        <DataTables selectedMetric={selectedMetric} growth="degrowth" data={data} />
-        <h1 className="text-xl font-bold mb-4 mt-5 text-green-600">Growth Table</h1>
-        <DataTables selectedMetric={selectedMetric} growth="growth" data={data} />
+         <h1 className="text-xl font-bold mt-7 text-rose-600" >Degrowth Table</h1> 
+        <DataTable growth="degrowth" masterCategoryData={masterCategoryData} cat1Data={cat1Data} data={data} selectedMetric={selectedMetric} />
+        <h1 className="text-xl font-bold  mt-5 text-green-600">Growth Table</h1>
+        <DataTable growth="growth" masterCategoryData={masterCategoryData} cat1Data={cat1Data} data={data} selectedMetric={selectedMetric} />
+
+
+        
       </div>
 
       <SalesComparisonChart selectedMetric={selectedMetric} data={data} />
