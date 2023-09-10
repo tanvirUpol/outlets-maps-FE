@@ -12,7 +12,7 @@ const Search = ({ onSearch }) => {
     return (
 
       <>
-         <div className=" relative z-10">
+         <div className="w-full relative z-10">
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                     <svg
                         aria-hidden="true"

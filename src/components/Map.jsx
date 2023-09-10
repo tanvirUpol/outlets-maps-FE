@@ -197,9 +197,9 @@ const Map = ({data,startLat,startLng}) => {
                       </Link>
                       <p>
 
-                      <Link className='cursor-pointer text-blue-500' to={`/compare`}>  
+                      {/* <Link className='cursor-pointer text-blue-500' to={`/compare`}>  
                         Compare Outlets &rarr;
-                      </Link>
+                      </Link> */}
                       </p>
                   </div>
                 </div>

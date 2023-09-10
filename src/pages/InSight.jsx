@@ -123,7 +123,7 @@ const InSight = () => {
 
     return (<>
         <div className="container mx-auto p-4">
-            <h1 className="text-2xl font-bold capitalize text-center mt-4 mb-8 text-rose-500">{field} and {field} Growth info for the month of {data[0].month}</h1>
+            <h1 className="text-2xl font-bold capitalize text-center mt-4 mb-8 text-teal-500">{type} Store <span className="uppercase text-rose-500">{field}</span> and <span className="uppercase text-rose-500">{field}  Growth</span> info for the month of {data[0].month}</h1>
 
             <div className="mb-4 flex items-start justify-between md:flex-row md:items-center">
                 <div className="mr-4 flex flex-col items-start justify-center gap-2 md:flex-row md:items-center">
@@ -172,11 +172,11 @@ const InSight = () => {
             <table className="min-w-full overflow-hidden rounded-lg bg-white text-sm sm:text-base md:text-lg  shadow-md">
                 <thead>
                     <tr className="bg-teal-500 text-white capitalize">
-                        <th className="p-4 text-left">Code</th>
-                        <th className="p-4 text-left">Outlet Name</th>
-                        <th className="p-4 text-left">{field} This</th>
-                        <th className="p-4 text-left">{field} Last</th>
-                        <th className="p-4 text-left">Growth</th>
+                        <th className="px-3 py-4 text-left">Code</th>
+                        <th className="px-3 py-4 text-left">Outlet Name</th>
+                        <th className="px-3 py-4 text-left">{field} This</th>
+                        <th className="px-3 py-4 text-left">{field} Last</th>
+                        <th className="px-3 py-4 text-left">Growth</th>
                         {/* <th className="p-4 text-left">Total FF</th> */}
                     </tr>
                 </thead>
@@ -188,20 +188,20 @@ const InSight = () => {
                                 className={`cursor-pointer font-medium hover:bg-teal-100 ${index % 2 === 0 ? "bg-teal-50" : "bg-white"
                                     }`}
                             >
-                                <td className="px-4 py-3 hover:underline">
+                                <td className="p-3 hover:underline">
                                     <Link to={`/outlet/${outlet.outlet_code}`}>
                                         {outlet.outlet_code}
                                     </Link>
                                 </td>
-                                <td className="px-4 py-3">
-                                    
-                                        {outlet.name}
-                                    
+                                <td className="p-3">
+
+                                    {outlet.name}
+
                                 </td>
-                                <td className="px-4 py-3">
+                                <td className="p-3">
                                     {numFor.format(outlet[field + "_this"].toFixed(2))}
                                 </td>
-                                <td className="px-4 py-3">
+                                <td className="p-3">
                                     {numFor.format(outlet[field + "_last"].toFixed(2))}
                                 </td>
                                 <td className={`p-3  ${outlet[field + "_growth"] <
