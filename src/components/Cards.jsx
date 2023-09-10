@@ -139,28 +139,28 @@ const Cards = ({filteredData}) => {
 
        
               <Card title={"All Store Sales"} mainData={sumSalesThisAllStore}
-              diff={AllSalesDiff} percentage={AllSalesDiffPercentage} />
+              diff={AllSalesDiff} percentage={AllSalesDiffPercentage} path={"/insight/sales-all"}  />
 
               <Card title={"Same Store Sales"} mainData={sumSalesThisSameStore}
-              diff={SameSalesDiff} percentage={SameSalesDiffPercentage} />
+              diff={SameSalesDiff} percentage={SameSalesDiffPercentage} path={"/insight/sales-same"}  />
 
               <Card title={"All Store FootFall"} mainData={sumFFThisAllStore}
-              diff={AllFFDiff} percentage={AllFFDiffPercentage} />
+              diff={AllFFDiff} percentage={AllFFDiffPercentage} path={"/insight/ff-all"} />
 
               <Card title={"Same Store FootFall"} mainData={sumFFThisSameStore}
-              diff={SameFFDiff} percentage={SameFFDiffPercentage} />
+              diff={SameFFDiff} percentage={SameFFDiffPercentage} path={"/insight/ff-same"} />
 
               <Card title={"All Store Basket"} mainData={avgBSThisAllStore}
-              diff={AllBSDiff} percentage={AllBSDiffPercentage} />
+              diff={AllBSDiff} percentage={AllBSDiffPercentage} path={"/insight/bs-all"} />
 
               <Card title={"Same Store Basket"} mainData={avgBSThisSameStore}
-              diff={SameBSDiff} percentage={SameBSDiffPercentage} />
+              diff={SameBSDiff} percentage={SameBSDiffPercentage} path={"/insight/bs-same"} />
 
               <Card title={"All Store GPV"} mainData={sumGPVThisAllStore}
-              diff={AllGPVDiff} percentage={AllGPVDiffPercentage} />
+              diff={AllGPVDiff} percentage={AllGPVDiffPercentage} path={"/insight/gpv-all"} />
 
               <Card title={"Same Store GPV"} mainData={sumGPVThisSameStore}
-              diff={SameGPVDiff} percentage={SameGPVDiffPercentage} />
+              diff={SameGPVDiff} percentage={SameGPVDiffPercentage} path={"/insight/gpv-same"} />
 
               <Link href="#" className="mx-1 block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
                   <h5 className="mb-2 text-sm lg:text-lg font-bold tracking-tight text-gray-600">All Store</h5>

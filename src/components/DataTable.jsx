@@ -168,6 +168,9 @@ const DataTable = ({ masterCategoryData, cat1Data, data, selectedMetric, growth 
                                                 <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white">
                                                   {selectedMetric} Growth %
                                                 </th>
+                                                <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white">
+                                                  Format {selectedMetric} GR %
+                                                </th>
                                               </tr>
                                             </thead>
                                             <tbody>
@@ -201,6 +204,12 @@ const DataTable = ({ masterCategoryData, cat1Data, data, selectedMetric, growth 
                                                             "_last"
                                                             ]
                                                           )}
+                                                        </td>
+                                                        <td className={`p-3  ${item["format_"+ selectedMetric + "_gr"] <
+                                                          0? "text-rose-500" : "text-green-600"} font-medium`}>
+                                                          {item[
+                                                            "format_"+ selectedMetric + "_gr"
+                                                          ].toFixed(2)}
                                                         </td>
                                                       </tr>
                                                     )}
@@ -273,7 +282,7 @@ const DataTable = ({ masterCategoryData, cat1Data, data, selectedMetric, growth 
                                 {selectedMetric} Last
                               </th>
                               <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white">
-                                {selectedMetric} Growth %
+                                {selectedMetric} Growth%
                               </th>
                             </tr>
                           </thead>
@@ -331,7 +340,10 @@ const DataTable = ({ masterCategoryData, cat1Data, data, selectedMetric, growth 
                                                   {selectedMetric} Last
                                                 </th>
                                                 <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white">
-                                                  {selectedMetric} Growth %
+                                                  {selectedMetric} Growth%
+                                                </th>
+                                                <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white">
+                                                  Format {selectedMetric} GR%
                                                 </th>
                                               </tr>
                                             </thead>
@@ -366,6 +378,12 @@ const DataTable = ({ masterCategoryData, cat1Data, data, selectedMetric, growth 
                                                             "_last"
                                                             ]
                                                           )}
+                                                        </td>
+                                                        <td className={`p-3  ${item["format_"+ selectedMetric + "_gr"] <
+                                                          0? "text-rose-500" : "text-green-600"} font-medium`}>
+                                                          {item[
+                                                            "format_"+ selectedMetric + "_gr"
+                                                          ].toFixed(2)}
                                                         </td>
                                                       </tr>
                                                     )}

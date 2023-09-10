@@ -59,10 +59,7 @@ const Map = ({data,startLat,startLng}) => {
     
 
     function getNumberOfDays(month) {
-      // console.log(month);
-      // Convert the month name to lowercase
       const lowercaseMonth = month.toLowerCase();
-      
       // Create an object with month names as keys and their corresponding number of days as values
       const daysInMonth = {
         january: 31,
@@ -196,8 +193,14 @@ const Map = ({data,startLat,startLng}) => {
                       </p>
 
                       <Link className='cursor-pointer text-blue-500' to={`/outlet/${item.outlet_code}`}>  
-                        View More Details &rarr;
+                        View Cat Wise Details &rarr;
                       </Link>
+                      <p>
+
+                      <Link className='cursor-pointer text-blue-500' to={`/compare`}>  
+                        Compare Outlets &rarr;
+                      </Link>
+                      </p>
                   </div>
                 </div>
               </Popup>

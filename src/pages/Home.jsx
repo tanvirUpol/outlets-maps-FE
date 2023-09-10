@@ -154,6 +154,18 @@ const Home = () => {
     ),
   ];
 
+  const uniqueOutlets = [
+    ...new Set(
+      data.map((item) => {
+        return item.outlet_code;
+      })
+    ),
+  ];
+
+  localStorage.setItem('outlets', JSON.stringify(uniqueOutlets))
+
+  console.log(uniqueOutlets);
+
 
   // add FF growth
   data.forEach((item) => {

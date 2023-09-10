@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import Card from "../components/Card";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Loading from "../components/Loading";
 import SalesComparisonChart from "../components/SalesComparisonChart";
-import DataTables from "../components/DataTables";
-
+// import DataTables from "../components/DataTables";
 
 import DataTable from "../components/DataTable";
 
@@ -16,11 +15,14 @@ const OutletData = () => {
   const { id } = useParams();
   const [selectedMetric, setSelectedMetric] = useState("sales");
   const [masterCategoryData, setMasterCategoryData] = useState([]);
-  const [cat3Data, setCat3Data] = useState([]);
   const [cat1Data, setCat1Data] = useState([]);
+  const [outlets, setOutlets] = useState([]);
+  const [selectedOutlets, setSelectedOutlets] = useState(id);
 
+  const [bestSellingProduct, setBestSellingProduct] = useState("");
+  const [maxSales, setMaxSales] = useState(-Infinity);
 
-
+  console.log(user);
 
   // Define a function to trim object
   const trimObjectValues = (obj) => {
@@ -64,6 +66,32 @@ const OutletData = () => {
       fetchData();
     }
   }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${api_url}/cat/${selectedOutlets}`, {
+          headers: {
+            Authorization: `'Bearer ${user.token}`,
+          },
+        });
+        const json = await response.json();
+
+        if (response.ok) {
+          console.log(json);
+          const trimmedData = json.map((item) => trimObjectValues(item));
+          console.log(trimmedData);
+          setData(trimmedData);
+          setMaxSales(-Infinity);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    if (user) {
+      fetchData();
+    }
+  }, [selectedOutlets]);
 
   // new code starts here
 
@@ -111,7 +139,7 @@ const OutletData = () => {
       const { cat_3, ...rest } = item;
       return { ...rest };
     });
-    setCat3Data(filteredCat1Data);
+
 
     // Aggregate data for 'CAT_1'
     const cat1Aggregated = aggregateData("cat_1");
@@ -153,7 +181,7 @@ const OutletData = () => {
 
   // Calculate total sales for each product
   const productSales = {};
-  data.forEach((item) => {
+  data?.forEach((item) => {
     const product = item["cat_3"];
     const sales = item["sales_this"];
     if (productSales[product]) {
@@ -163,23 +191,26 @@ const OutletData = () => {
     }
   });
 
-  const [bestSellingProduct, setBestSellingProduct] = useState("");
-  const [worstSellingProduct, setWorstSellingProduct] = useState("");
-  const [maxSales, setMaxSales] = useState(-Infinity);
-  const [minSales, setMinSales] = useState(Infinity);
+  // console.log(productSales);
 
   for (const product in productSales) {
     if (productSales[product] > maxSales) {
+      // console.log(product);
       setMaxSales(productSales[product]);
       setBestSellingProduct(product);
-    }
-    if (productSales[product] < minSales) {
-      setMinSales(productSales[product]);
-      setWorstSellingProduct(product);
     }
   }
 
   const numFor = Intl.NumberFormat("en-US");
+
+  useEffect(() => {
+    const local_outlets = JSON.parse(localStorage.getItem("outlets"));
+    if (local_outlets) {
+      setOutlets(local_outlets);
+    }
+  }, []);
+
+  // console.log(selectedOutlets);
 
   if (!data.length > 0) {
     return <Loading />;
@@ -187,10 +218,28 @@ const OutletData = () => {
 
   return (
     <div className="container mx-auto p-4">
-      {data && (
-        <h1 className="mb-4 text-xl font-semibold">{data[0].name} Data</h1>
-      )}
-      <div className="mb-8 grid gap-4 grid-cols-2 md:grid-cols-4">
+      <div className="mb-4 flex items-center justify-between">
+        {data && (
+          <h1 className="text-lg font-semibold md:text-xl">
+            {data[0].name} Data
+          </h1>
+        )}
+        <div className="flex items-center justify-start gap-2">
+          <h1>Outlet:</h1>
+          <select
+            value={selectedOutlets}
+            onChange={(e) => setSelectedOutlets(e.target.value)}
+            className="block w-32 rounded-lg border border-gray-300 bg-gray-50 p-2 text-sm font-medium text-gray-900 focus:border-blue-500  focus:ring-blue-500 md:w-44 md:p-3"
+          >
+            {outlets.map((outlet) => (
+              <option key={outlet} value={outlet}>
+                {outlet}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-4">
         <Card
           title={"Total Sales"}
           mainData={totalSalesThis}
@@ -215,10 +264,19 @@ const OutletData = () => {
             averageBasketSizeLast
           )}
         />
-        <div href="#" className="block cursor-pointer mx-1 w-full p-5 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
-          <h5 className="mb-1 text-sm lg:text-lg font-bold tracking-tight text-gray-600">Best Selling Product</h5>
-          <p className="mb-1 font-semibold text-gray-950 text-lg lg:text-2xl">{numFor.format(Math.round(maxSales))}</p>
-          <p className="mb-1 font-semibold text-green-600 text-xs">{bestSellingProduct}</p>
+        <div
+          href="#"
+          className="mx-1 block w-full cursor-pointer rounded-lg border border-gray-200 bg-white p-5 shadow hover:bg-gray-100"
+        >
+          <h5 className="mb-1 text-sm font-bold tracking-tight text-gray-600 lg:text-lg">
+            Best Selling Product
+          </h5>
+          <p className="mb-1 text-lg font-semibold text-gray-950 lg:text-2xl">
+            {numFor.format(Math.round(maxSales))}
+          </p>
+          <p className="mb-1 text-xs font-semibold text-green-600">
+            {bestSellingProduct}
+          </p>
         </div>
       </div>
 
@@ -236,13 +294,22 @@ const OutletData = () => {
           </select>
         </div>
 
-         <h1 className="text-xl font-bold mt-7 text-rose-600" >Degrowth Table</h1> 
-        <DataTable growth="degrowth" masterCategoryData={masterCategoryData} cat1Data={cat1Data} data={data} selectedMetric={selectedMetric} />
-        <h1 className="text-xl font-bold  mt-5 text-green-600">Growth Table</h1>
-        <DataTable growth="growth" masterCategoryData={masterCategoryData} cat1Data={cat1Data} data={data} selectedMetric={selectedMetric} />
-
-
-        
+        <h1 className="mt-7 text-xl font-bold text-rose-600">Degrowth Table</h1>
+        <DataTable
+          growth="degrowth"
+          masterCategoryData={masterCategoryData}
+          cat1Data={cat1Data}
+          data={data}
+          selectedMetric={selectedMetric}
+        />
+        <h1 className="mt-5 text-xl  font-bold text-green-600">Growth Table</h1>
+        <DataTable
+          growth="growth"
+          masterCategoryData={masterCategoryData}
+          cat1Data={cat1Data}
+          data={data}
+          selectedMetric={selectedMetric}
+        />
       </div>
 
       <SalesComparisonChart selectedMetric={selectedMetric} data={data} />

@@ -58,6 +58,10 @@ const UploadFile = () => {
     "Sales Last",
     "POS GPV This",
     "POS GPV Last",
+    "Format Sales GR%",
+    "Format FF GR%",
+    "Format BS GR%",
+    "Format GPV GR%",
   ];
 
 
@@ -103,6 +107,10 @@ const UploadFile = () => {
     "POS GPV Last": "pos_gpv_last",
     "Sales This": "sales_this",
     "Sales Last": "sales_last",
+    "Format Sales GR%": "format_sales_gr",
+    "Format FF GR%": "format_ff_gr",
+    "Format BS GR%": "format_bs_gr",
+    "Format GPV GR%": "format_pos_gpv_gr",
   };
 
 
@@ -137,6 +145,10 @@ const UploadFile = () => {
     "master_category": "string",
     "cat_1": "string",
     "cat_3": "string",
+    "format_sales_gr": "integer",
+    "format_ff_gr": "integer",
+    "format_bs_gr": "integer",
+    "format_pos_gpv_gr":"integer",
   };
 
 

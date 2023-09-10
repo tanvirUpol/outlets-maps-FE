@@ -12,6 +12,8 @@ import HomeAdmin from './pages/HomeAdmin';
 import Loading from './components/Loading';
 import UploadFile from './pages/UploadFile';
 import OutletData from './pages/OutletData';
+import OutletCompare from './pages/OutletCompare';
+import InSight from './pages/InSight';
 
 
 function App() {
@@ -76,6 +78,30 @@ function App() {
                     <Navigate to="/" />
                     ) : (
                     <OutletData />
+                  )
+                }
+              />
+              <Route
+                path="/insight/:id"
+                element={
+                  !user ? (
+                    <Navigate to="/login" />
+                  ) : isAdmin(user) ? (
+                    <Navigate to="/" />
+                    ) : (
+                    <InSight />
+                  )
+                }
+              />
+              <Route
+                path="/compare"
+                element={
+                  !user ? (
+                    <Navigate to="/login" />
+                  ) : isAdmin(user) ? (
+                    <Navigate to="/" />
+                    ) : (
+                    <OutletCompare />
                   )
                 }
               />
