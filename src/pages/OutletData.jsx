@@ -265,7 +265,6 @@ const OutletData = () => {
           )}
         />
         <div
-          href="#"
           className="mx-1 block w-full cursor-pointer rounded-lg border border-gray-200 bg-white p-5 shadow hover:bg-gray-100"
         >
           <h5 className="mb-1 text-sm font-bold tracking-tight text-gray-600 lg:text-lg">
