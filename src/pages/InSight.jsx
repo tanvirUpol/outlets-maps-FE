@@ -165,7 +165,7 @@ const InSight = () => {
                     </p> */}
           </div>
         </div>
-        <div className="mb-4 flex items-start justify-between md:flex-row md:items-center">
+        <div className="mb-4 flex flex-col-reverse gap-3 items-start justify-between md:flex-row md:items-center">
           <div className="mr-4 flex flex-col items-start justify-center gap-2 md:flex-row md:items-center">
             <p className="font-semibold">Seach:</p>
             <Search onSearch={handleSearch} />
