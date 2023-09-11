@@ -168,7 +168,7 @@ const UploadFile = () => {
           header: 0,
           defval: "not given",
         });
-      }else if(file.name == "outletCatWise.xlsb") {
+      }else if(file.name == "outletCatWise.xlsb" || file.name == "outletCatWiseSPLM.xlsb" ) {
         const worksheetName = workbook.SheetNames[2];
         const worksheet = workbook.Sheets[worksheetName];
          json = utils.sheet_to_json(worksheet, {
@@ -184,7 +184,7 @@ const UploadFile = () => {
       if (file.name === "outletSum.xlsx") {
         console.log(file);
         isCorrectFormat = expectedHeaders.every((expectedHeader) => actualHeaders.includes(expectedHeader));
-      } else if (file.name === "outletCatWise.xlsb") {
+      } else if (file.name == "outletCatWise.xlsb" || file.name == "outletCatWiseSPLM.xlsb" ) {
         isCorrectFormat = expectedHeaders2.every(expectedHeader => actualHeaders.includes(expectedHeader));
       }
 
@@ -226,7 +226,7 @@ const UploadFile = () => {
           return transformedItem;
         });
       }
-      if (file.name == "outletCatWise.xlsb") {
+      if (file.name == "outletCatWise.xlsb" || file.name == "outletCatWiseSPLM.xlsb" ) {
         transformedData = json.map(item => {
           const transformedItem = {};
           // console.log("item: ", item);
@@ -262,12 +262,12 @@ const UploadFile = () => {
       
         for (const key in modifiedUser) {
           if (modifiedUser[key] === "not given" || modifiedUser[key] === "" || modifiedUser[key] === undefined) {
-            console.log(key,"paisi");
+            // console.log(key,"paisi");
             if (dataTypes[key] === "string") {
-              console.log("string paisi");
+              // console.log("string paisi");
               modifiedUser[key] = "Not available";
             } else if (dataTypes[key] === "integer") {
-              console.log("integer paisi");
+              // console.log("integer paisi");
               modifiedUser[key] = 0;
             }
           }
@@ -350,6 +350,8 @@ const UploadFile = () => {
       custom_url = `${api_url}/outlets/`
     } else if (name == "outletCatWise.xlsb") {
       custom_url = `${api_url}/cat/`
+    } else if (name == "outletCatWiseSPLM.xlsb") {
+      custom_url = `${api_url}/catm/`
     }
     console.log(jsonData);
     const response = await fetch(custom_url, {

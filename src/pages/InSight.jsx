@@ -124,12 +124,13 @@ const InSight = () => {
     return (
         <>
             <div className="container mx-auto p-4">
-                <h1 className="mb-8 mt-4 text-center  text-xl font-bold capitalize text-teal-500">
+                <h1 className="mb-8 mt-4 text-center text-base  lg:text-xl font-bold capitalize text-teal-500">
                     {type} Store <span className="uppercase text-rose-500">{field}</span>{" "}
                     and <span className="uppercase text-rose-500">{field} Growth </span>{" "}
                     info for the month of {data[0].month}
                 </h1>
-                <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-3">
+        
+                <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-4">
                     <div className="mx-1 block w-full cursor-pointer rounded-lg border border-gray-200 bg-white p-5 shadow hover:bg-gray-100">
                         <h5 className="mb-1 text-sm font-bold uppercase tracking-tight text-gray-600 lg:text-lg">
                             Total {type} Store
@@ -169,8 +170,8 @@ const InSight = () => {
                             Total Growth
                         </h5>
                         <p className={`  ${totalThis < totalLast
-                                ? "text-rose-500"
-                                : "text-green-600"
+                            ? "text-rose-500"
+                            : "text-green-600"
                             } font-medium mb-1 text-lg  text-gray-950 lg:text-2xl`}>
                             {calculateGrowthPercentage(totalThis, totalLast)} %
                         </p>
@@ -251,8 +252,8 @@ const InSight = () => {
                                 </td>
                                 <td
                                     className={`p-3  ${outlet[field + "_growth"] < 0
-                                            ? "text-rose-500"
-                                            : "text-green-600"
+                                        ? "text-rose-500"
+                                        : "text-green-600"
                                         } font-medium`}
                                 >
                                     {outlet[field + "_growth"]}
