@@ -168,6 +168,7 @@ const OutletData = () => {
 
   const averageBasketSizeThis =
     data?.reduce((sum, item) => sum + item["bs_this"], 0) / data.length;
+
   const averageBasketSizeLast =
     data?.reduce((sum, item) => sum + item["bs_last"], 0) / data.length;
 
@@ -255,7 +256,7 @@ const OutletData = () => {
             totalPosGPVLast
           )}
         />
-        <Card
+        {/* <Card
           title={"Avg. Basket Size"}
           mainData={averageBasketSizeThis}
           diff={averageBasketSizeThis - averageBasketSizeLast}
@@ -263,7 +264,7 @@ const OutletData = () => {
             averageBasketSizeThis,
             averageBasketSizeLast
           )}
-        />
+        /> */}
         <div
           className="mx-1 block w-full cursor-pointer rounded-lg border border-gray-200 bg-white p-5 shadow hover:bg-gray-100"
         >
