@@ -227,7 +227,7 @@ const Cards = ({ filteredData }) => {
         percentage={SameGPVDiffPercentage}
         path={"/insight/gpv-same"}
       />
-      <Card
+      {/* <Card
         title={"All Store"}
         mainData={allStoreCount}
         path={""}
@@ -248,9 +248,9 @@ const Cards = ({ filteredData }) => {
         title={"Non Profitable Stores"}
         mainData={totalNonProfitableStores}
         path={""}
-      />
+      /> */}
 
-      {/* <div href="#" className="mx-1 block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
+      <div href="#" className="mx-1 block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
                   <h5 className="mb-2 text-sm lg:text-lg font-bold tracking-tight text-gray-600">All Store</h5>
                   <p className="font-semibold text-gray-950 text-2xl">{allStoreCount}</p>
               </div>
@@ -270,7 +270,7 @@ const Cards = ({ filteredData }) => {
                   <h5 className="mb-2 text-sm lg:text-lg font-bold tracking-tight text-gray-600">Non Prof. Stores:</h5>
                   <p className="font-semibold text-gray-950 text-lg lg:text-2xl relative inline-block">{totalNonProfitableStores}
                   </p>
-              </div> */}
+              </div>
     </>
   );
 };

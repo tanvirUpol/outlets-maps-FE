@@ -62,7 +62,7 @@ const DataTable = ({ masterCategoryData, cat1Data, data, selectedMetric, growth 
             {growth == "growth" && calculateGrowthPercentage(
               item[selectedMetric + "_this"],
               item[selectedMetric + "_last"]
-            ) >= 0 && (
+            ) >= 0 && item.master_category !=="44-HOME DELIVERY" && item.master_category !=="Undf# 2" && (
                 <>
                   <tr
                     onClick={() => toggleMaster(item.master_category)}
@@ -236,7 +236,7 @@ const DataTable = ({ masterCategoryData, cat1Data, data, selectedMetric, growth 
             {growth == "degrowth" && calculateGrowthPercentage(
               item[selectedMetric + "_this"],
               item[selectedMetric + "_last"]
-            ) < 0 && (
+            ) < 0 &&  item.master_category !=="44-HOME DELIVERY" && item.master_category !=="Undf# 2" && (
                 <>
                   <tr
                     onClick={() => toggleMaster(item.master_category)}
