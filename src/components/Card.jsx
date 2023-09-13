@@ -62,7 +62,7 @@ const Card = ({ title, mainData, diff, percentage, path }) => {
         >
           {numFor.format(Math.round(mainData))}
         </p>
-        {percentage && (
+        { (
           <span
             className={`flex gap-1 text-xs font-semibold ${
               diff < 0 ? "text-rose-500" : "text-green-600"
