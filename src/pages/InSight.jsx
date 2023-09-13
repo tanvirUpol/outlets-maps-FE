@@ -53,9 +53,16 @@ const InSight = () => {
     }, []);
 
     const allStore = data?.filter((obj) => obj["ff_this"] >= 0);
+    
+    const allStoreGrowth = allStore?.filter((obj) => obj[field + "_this"] >= obj[field + "_last"] );
+    const allStoreGrowthCount = allStoreGrowth.length;
+    
     const sameStore = data?.filter(
         (obj) => obj["ff_this"] > 0 && obj["ff_last"] > 0
     );
+
+    const allStoreDeGrowth = allStore?.filter((obj) => obj[field + "_this"] < obj[field + "_last"] );
+    const allStoreDeGrowthCount = allStoreDeGrowth.length;
 
     const actual_data = type === "all" ? allStore : sameStore;
 
@@ -132,7 +139,7 @@ const InSight = () => {
         
                 <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-4">
                     <div className="mx-1 block w-full cursor-pointer rounded-lg border border-gray-200 bg-white p-5 shadow hover:bg-gray-100">
-                        <h5 className="mb-1 text-sm font-bold uppercase tracking-tight text-gray-600 lg:text-lg">
+                        <h5 className="mb-1 text-sm font-bold uppercase tracking-tight text-gray-600 lg:text-base">
                             Total {type} Store
                         </h5>
                         <p className="mb-1 text-lg font-semibold text-gray-950 lg:text-2xl">
@@ -143,7 +150,19 @@ const InSight = () => {
                     </p> */}
                     </div>
                     <div className="mx-1 block w-full cursor-pointer rounded-lg border border-gray-200 bg-white p-5 shadow hover:bg-gray-100">
-                        <h5 className="mb-1 text-sm font-bold uppercase tracking-tight text-gray-600 lg:text-lg">
+                        <h5 className="mb-1 text-sm font-bold uppercase tracking-tight text-gray-600 lg:text-base">
+                            Total Growth ({field})
+                        </h5>
+                        <p className={`  ${totalThis < totalLast
+                            ? "text-rose-500"
+                            : "text-green-600"
+                            } font-medium mb-1 text-lg  text-gray-950 lg:text-2xl`}>
+                            {calculateGrowthPercentage(totalThis, totalLast)} %
+                        </p>
+                        
+                    </div>
+                    <div className="mx-1 block w-full cursor-pointer rounded-lg border border-gray-200 bg-white p-5 shadow hover:bg-gray-100">
+                        <h5 className="mb-1 text-sm font-bold uppercase tracking-tight text-gray-600 lg:text-base">
                             Total {field} This
                         </h5>
                         <p className="mb-1 text-lg font-semibold text-gray-950 lg:text-2xl">
@@ -155,7 +174,7 @@ const InSight = () => {
                     </div>
 
                     <div className="mx-1 block w-full cursor-pointer rounded-lg border border-gray-200 bg-white p-5 shadow hover:bg-gray-100">
-                        <h5 className="mb-1 text-sm font-bold uppercase tracking-tight text-gray-600 lg:text-lg">
+                        <h5 className="mb-1 text-sm font-bold uppercase tracking-tight text-gray-600 lg:text-base">
                             Total {field} Last
                         </h5>
                         <p className="mb-1 text-lg font-semibold text-gray-950 lg:text-2xl">
@@ -166,19 +185,30 @@ const InSight = () => {
                     </p> */}
                     </div>
                     <div className="mx-1 block w-full cursor-pointer rounded-lg border border-gray-200 bg-white p-5 shadow hover:bg-gray-100">
-                        <h5 className="mb-1 text-sm font-bold uppercase tracking-tight text-gray-600 lg:text-lg">
-                            Total Growth
+                        <h5 className="mb-1 text-sm font-bold uppercase tracking-tight text-gray-600 lg:text-base">
+                            Total Stores in Growth ({field})
                         </h5>
-                        <p className={`  ${totalThis < totalLast
-                            ? "text-rose-500"
-                            : "text-green-600"
-                            } font-medium mb-1 text-lg  text-gray-950 lg:text-2xl`}>
-                            {calculateGrowthPercentage(totalThis, totalLast)} %
+                        <p className="mb-1 text-lg font-semibold text-gray-950 lg:text-2xl">
+                            {numFor.format(allStoreGrowthCount)}
                         </p>
                         {/* <p className="mb-1 text-xs font-semibold text-green-600">
                         {bestSellingProduct}
                     </p> */}
                     </div>
+                    <div className="mx-1 block w-full cursor-pointer rounded-lg border border-gray-200 bg-white p-5 shadow hover:bg-gray-100">
+                        <h5 className="mb-1 text-sm font-bold uppercase tracking-tight text-gray-600 lg:text-base">
+                            Total Stores in Degrowth ({field})
+                        </h5>
+                        <p className="mb-1 text-lg font-semibold text-gray-950 lg:text-2xl">
+                            {numFor.format(allStoreDeGrowthCount)}
+                        </p>
+                        {/* <p className="mb-1 text-xs font-semibold text-green-600">
+                        {bestSellingProduct}
+                    </p> */}
+                    </div>
+
+                    
+                    
                 </div>
                 <div className="mb-4 flex flex-col-reverse gap-3 items-start justify-between md:flex-row md:items-center">
                     <div className="mr-4 flex flex-col items-start justify-center gap-2 md:flex-row md:items-center">
