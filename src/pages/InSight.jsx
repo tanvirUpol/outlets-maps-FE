@@ -127,7 +127,7 @@ const InSight = () => {
                 <h1 className="mb-8 mt-4 text-center text-base  lg:text-xl font-bold capitalize text-teal-500">
                     {type} Store <span className="uppercase text-rose-500">{field}</span>{" "}
                     and <span className="uppercase text-rose-500">{field} Growth </span>{" "}
-                    info for the month of {data[0].month}
+                    info for {data[0].month} [ 1 - {data[0].day} ]
                 </h1>
         
                 <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-4">

@@ -93,15 +93,15 @@ const Map = ({data,startLat,startLng}) => {
       }
     }
 
-    function getAvg(value,month) {
-      const avgValue = roundNumber(value/getNumberOfDays(month))
+    function getAvg(value,day) {
+      const avgValue = roundNumber(value/day)
       return avgValue
     }
 
     
-    const calculatePercentage = (thisVal, lastVal , lastFF, month) => {
+    const calculatePercentage = (thisVal, lastVal , lastFF, day) => {
       if(lastFF>0) {
-        return (((getAvg(thisVal,month)  - getAvg(lastVal,month)) / lastVal) * 100).toFixed(2);
+        return (((getAvg(thisVal,day)  - getAvg(lastVal,day)) / lastVal) * 100).toFixed(2);
       } else { 
         return ""
       }
@@ -138,10 +138,10 @@ const Map = ({data,startLat,startLng}) => {
                       {/* sales data */}
                       <p>
                         <span  className='font-semibold' >Avg Sales/day: </span>
-                        <span className='mr-1' >{ getAvg(item["sales_this"],item.month) } ৳  </span>  
+                        <span className='mr-1' >{ getAvg(item["sales_this"],item.day) } ৳  </span>  
                         
                         <span className={`${item["sales_this"]<item["sales_last"]?"text-red-400":"text-green-500"}`} > 
-                          { calculatePercentage(item["sales_this"],item["sales_last"],item["ff_last"],item.month)} 
+                          { calculatePercentage(item["sales_this"],item["sales_last"],item["ff_last"],item.day)} 
                           <span className={`${item["ff_last"]==0?"hidden":"inline-block"}`} >%</span>
                         </span>
                           
@@ -150,30 +150,30 @@ const Map = ({data,startLat,startLng}) => {
                       {/* FF data */}
                       <p>
                         <span  className='font-semibold' >Avg FF/day: </span>
-                        <span className='mr-1' >{ getAvg(item["ff_this"],item.month) } </span>  
+                        <span className='mr-1' >{ getAvg(item["ff_this"],item.day) } </span>  
                         
                         <span className={`${item["ff_this"]<item["ff_last"]?"text-red-400":"text-green-500"}`} > 
-                          { calculatePercentage(item["ff_this"],item["ff_last"],item["ff_last"],item.month)} 
+                          { calculatePercentage(item["ff_this"],item["ff_last"],item["ff_last"],item.day)} 
                           <span className={`${item["ff_last"]==0?"hidden":"inline-block"}`} >%</span>
                         </span>   
                       </p>
                       {/* BS data */}
                       <p>
                         <span  className='font-semibold' >Avg BS/day: </span>
-                        <span className='mr-1' >{ getAvgBS(getAvg(item["sales_this"],item.month),getAvg(item["ff_this"],item.month)) } ৳  </span>  
+                        <span className='mr-1' >{ getAvgBS(getAvg(item["sales_this"],item.day),getAvg(item["ff_this"],item.day)) } ৳  </span>  
                         
                         <span className={`${item["bs_this"]<item["bs_last"]?"text-red-400":"text-green-500"}`} > 
-                          { calculatePercentage(item["bs_this"],item["bs_last"],item["ff_last"],item.month)} 
+                          { calculatePercentage(item["bs_this"],item["bs_last"],item["ff_last"],item.day)} 
                           <span className={`${item["bs_last"]==0?"hidden":"inline-block"}`} >%</span>
                         </span>   
                       </p>
                       {/* GPV data */}
                       <p>
                         <span  className='font-semibold' >GPV growth: </span>
-                        <span className='mr-1' >{ getAvg(item["gpv_this"],item.month) } ৳  </span>  
+                        <span className='mr-1' >{ getAvg(item["gpv_this"],item.day) } ৳  </span>  
                         
                         <span className={`${item["gpv_this"]<item["gpv_last"]?"text-red-400":"text-green-500"}`} > 
-                          { calculatePercentage(item["gpv_this"],item["gpv_last"],item["ff_last"],item.month)} 
+                          { calculatePercentage(item["gpv_this"],item["gpv_last"],item["ff_last"],item.day)} 
                           <span className={`${item["gpv_last"]==0?"hidden":"inline-block"}`} >%</span>
                         </span>   
                       </p>

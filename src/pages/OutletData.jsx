@@ -22,7 +22,7 @@ const OutletData = () => {
   const [bestSellingProduct, setBestSellingProduct] = useState("");
   const [maxSales, setMaxSales] = useState(-Infinity);
 
-  console.log(user);
+  // console.log(user);
 
   // Define a function to trim object
   const trimObjectValues = (obj) => {

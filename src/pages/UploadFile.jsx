@@ -37,6 +37,7 @@ const UploadFile = () => {
     "Sales This",
     "Sales Last",
     "Month",
+    "Day",
     "Division",
     "District",
   ];
@@ -50,6 +51,8 @@ const UploadFile = () => {
     "Master Category",
     "CAT 1",
     "Cat 3",
+    "Month",
+    "Day",
     "FF This",
     "FF Last",
     "Basket Size This",
@@ -87,6 +90,7 @@ const UploadFile = () => {
     "Sales This": "sales_this",
     "Sales Last": "sales_last",
     "Month": "month",
+    "Day": "day",
     "Division": "division",
     "District": "district"
   };
@@ -111,6 +115,8 @@ const UploadFile = () => {
     "Format FF GR%": "format_ff_gr",
     "Format BS GR%": "format_bs_gr",
     "Format GPV GR%": "format_pos_gpv_gr",
+    "Month": "month",
+    "Day" : "day",
   };
 
 
@@ -149,6 +155,8 @@ const UploadFile = () => {
     "format_ff_gr": "integer",
     "format_bs_gr": "integer",
     "format_pos_gpv_gr":"integer",
+    "Month": "string",
+    "Day": "integer",
   };
 
 
