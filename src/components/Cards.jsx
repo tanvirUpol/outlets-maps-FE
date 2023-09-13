@@ -1,5 +1,4 @@
 import { Tooltip } from "react-tooltip";
-import { Link } from "react-router-dom";
 import Card from "./Card";
 const Cards = ({ filteredData }) => {
   const totalOutlets = filteredData.length;
