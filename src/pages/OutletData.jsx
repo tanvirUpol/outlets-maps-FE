@@ -18,6 +18,7 @@ const OutletData = () => {
   const [cat1Data, setCat1Data] = useState([]);
   const [outlets, setOutlets] = useState([]);
   const [selectedOutlets, setSelectedOutlets] = useState(id);
+  const [selectedMode, setSelectedMode] = useState("cat");
 
   const [bestSellingProduct, setBestSellingProduct] = useState("");
   const [maxSales, setMaxSales] = useState(-Infinity);
@@ -45,7 +46,7 @@ const OutletData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${api_url}/cat/${id}`, {
+        const response = await fetch(`${api_url}/${selectedMode}/${id}`, {
           headers: {
             Authorization: `'Bearer ${user.token}`,
           },
@@ -65,7 +66,7 @@ const OutletData = () => {
     if (user) {
       fetchData();
     }
-  }, []);
+  }, [selectedMode]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -239,8 +240,9 @@ const OutletData = () => {
             ))}
           </select>
         </div>
+        
       </div>
-      <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-4">
+      <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-3">
         <Card
           title={"Total Sales"}
           mainData={totalSalesThis}
@@ -281,17 +283,35 @@ const OutletData = () => {
       </div>
 
       <div className="">
-        <div className="flex items-center justify-start gap-2">
-          <h1>Filter By:</h1>
-          <select
-            value={selectedMetric}
-            onChange={(e) => setSelectedMetric(e.target.value)}
-            className="block w-44 rounded-lg border border-gray-300 bg-gray-50 p-3 text-sm font-medium  text-gray-900 focus:border-blue-500 focus:ring-blue-500"
-          >
-            <option value="bs">Basket Size</option>
-            <option value="sales">Sales</option>
-            <option value="pos_gpv">POS GPV</option>
-          </select>
+
+        <div className="flex justify-between items-center" >
+
+          <div className="flex items-center justify-start gap-2">
+            <h1>Filter By:</h1>
+            <select
+              value={selectedMetric}
+              onChange={(e) => setSelectedMetric(e.target.value)}
+              className="block w-44 rounded-lg border border-gray-300 bg-gray-50 p-3 text-sm font-medium  text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+            >
+              <option value="bs">Basket Size</option>
+              <option value="sales">Sales</option>
+              <option value="pos_gpv">POS GPV</option>
+            </select>
+          </div>
+
+          <div className="flex items-center justify-start gap-2">
+            <h1>Mode:</h1>
+            <select
+              value={selectedMode}
+              onChange={(e) => setSelectedMode(e.target.value)}
+              className="block w-32 rounded-lg border border-gray-300 bg-gray-50 p-2 text-sm font-medium text-gray-900 focus:border-blue-500  focus:ring-blue-500 md:w-44 md:p-3"
+            >
+              <option value="cat">SPLY</option>
+              <option value="catm">SPLM</option>
+        
+            </select>
+          </div>
+
         </div>
 
         <h1 className="mt-7 text-xl font-bold text-rose-600">Degrowth Table</h1>

@@ -14,6 +14,7 @@ import UploadFile from './pages/UploadFile';
 import OutletData from './pages/OutletData';
 import OutletCompare from './pages/OutletCompare';
 import InSight from './pages/InSight';
+import ZonalForm from './pages/ZonalForm';
 
 
 function App() {
@@ -102,6 +103,18 @@ function App() {
                     <Navigate to="/" />
                     ) : (
                     <OutletCompare />
+                  )
+                }
+              />
+              <Route
+                path="/zonalForm"
+                element={
+                  !user ? (
+                    <Navigate to="/login" />
+                  ) : isAdmin(user) ? (
+                    <Navigate to="/" />
+                    ) : (
+                    <ZonalForm />
                   )
                 }
               />
