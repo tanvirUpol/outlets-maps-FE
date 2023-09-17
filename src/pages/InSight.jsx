@@ -56,13 +56,19 @@ const InSight = () => {
     
     const allStoreGrowth = allStore?.filter((obj) => obj[field + "_this"] >= obj[field + "_last"] );
     const allStoreGrowthCount = allStoreGrowth.length;
-    
+
+    const allStoreDeGrowth = allStore?.filter((obj) => obj[field + "_this"] < obj[field + "_last"] );
+    const allStoreDeGrowthCount = allStoreDeGrowth.length;
+
     const sameStore = data?.filter(
         (obj) => obj["ff_this"] > 0 && obj["ff_last"] > 0
     );
 
-    const allStoreDeGrowth = allStore?.filter((obj) => obj[field + "_this"] < obj[field + "_last"] );
-    const allStoreDeGrowthCount = allStoreDeGrowth.length;
+    const sameStoreGrowth = sameStore?.filter((obj) => obj[field + "_this"] >= obj[field + "_last"] );
+    const sameStoreGrowthCount = sameStoreGrowth.length;
+
+    const sameStoreDeGrowth = sameStore?.filter((obj) => obj[field + "_this"] < obj[field + "_last"] );
+    const sameStoreDeGrowthCount = sameStoreDeGrowth.length;
 
     const actual_data = type === "all" ? allStore : sameStore;
 
@@ -189,7 +195,7 @@ const InSight = () => {
                             Total Stores in Growth ({field})
                         </h5>
                         <p className="mb-1 text-lg font-semibold text-gray-950 lg:text-2xl">
-                            {numFor.format(allStoreGrowthCount)}
+                            {numFor.format( type == "all" ? allStoreGrowthCount : sameStoreGrowthCount)}
                         </p>
                         {/* <p className="mb-1 text-xs font-semibold text-green-600">
                         {bestSellingProduct}
@@ -200,7 +206,7 @@ const InSight = () => {
                             Total Stores in Degrowth ({field})
                         </h5>
                         <p className="mb-1 text-lg font-semibold text-gray-950 lg:text-2xl">
-                            {numFor.format(allStoreDeGrowthCount)}
+                            {numFor.format( type == "all" ? allStoreDeGrowthCount : sameStoreDeGrowthCount)}
                         </p>
                         {/* <p className="mb-1 text-xs font-semibold text-green-600">
                         {bestSellingProduct}
