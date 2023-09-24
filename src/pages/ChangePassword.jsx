@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAuthContext } from "../hooks/useAuthContext";
+import toast, { Toaster } from 'react-hot-toast';
 
 const ChangePassword = () => {
   const { register, handleSubmit, formState: { errors }, watch,reset } = useForm();
@@ -29,6 +30,7 @@ const ChangePassword = () => {
         if (response.status === 200) {
           // Password change successful
           // You can handle success as needed (e.g., show a success message)
+          toast.success('Password Changed Successfully!')
           console.log("success!");
           setResError(null)
         } else {
@@ -49,8 +51,8 @@ const ChangePassword = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-start mt-20 justify-center bg-gray-100">
-      <div className="max-w-md w-full p-6 bg-white rounded-md shadow-md">
+    <div className="min-h-screen flex items-start  justify-center bg-gray-100">
+      <div className="max-w-md w-full p-6 mt-20 bg-white rounded-md shadow-md">
         <h2 className="text-2xl font-semibold mb-4">Change Password</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
@@ -118,6 +120,10 @@ const ChangePassword = () => {
         </form>
         {resError && <p className="rounded-md border border-red-700 bg-red-100 p-4  text-red-600 mt-2" >{resError}</p>}
       </div>
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+      />
     </div>
   );
 };
