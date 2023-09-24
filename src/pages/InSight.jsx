@@ -3,6 +3,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { Link, useParams } from "react-router-dom";
 import Loading from "../components/Loading";
 import Search from "../components/Search";
+import * as XLSX from "xlsx";
 
 const InSight = () => {
     const [data, setData] = useState([]);
@@ -52,22 +53,37 @@ const InSight = () => {
         }
     }, []);
 
+
+    const downloadOutletsCollection = async () => {
+        try {
+
+
+
+            const worksheet = XLSX.utils.json_to_sheet(data);
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, "SPLY");
+            XLSX.writeFile(workbook, "data.xlsx");
+        } catch (error) {
+            console.error("Error downloading users collection:", error);
+        }
+    };
+
     const allStore = data?.filter((obj) => obj["ff_this"] >= 0);
-    
-    const allStoreGrowth = allStore?.filter((obj) => obj[field + "_this"] >= obj[field + "_last"] );
+
+    const allStoreGrowth = allStore?.filter((obj) => obj[field + "_this"] >= obj[field + "_last"]);
     const allStoreGrowthCount = allStoreGrowth.length;
 
-    const allStoreDeGrowth = allStore?.filter((obj) => obj[field + "_this"] < obj[field + "_last"] );
+    const allStoreDeGrowth = allStore?.filter((obj) => obj[field + "_this"] < obj[field + "_last"]);
     const allStoreDeGrowthCount = allStoreDeGrowth.length;
 
     const sameStore = data?.filter(
         (obj) => obj["ff_this"] > 0 && obj["ff_last"] > 0
     );
 
-    const sameStoreGrowth = sameStore?.filter((obj) => obj[field + "_this"] >= obj[field + "_last"] );
+    const sameStoreGrowth = sameStore?.filter((obj) => obj[field + "_this"] >= obj[field + "_last"]);
     const sameStoreGrowthCount = sameStoreGrowth.length;
 
-    const sameStoreDeGrowth = sameStore?.filter((obj) => obj[field + "_this"] < obj[field + "_last"] );
+    const sameStoreDeGrowth = sameStore?.filter((obj) => obj[field + "_this"] < obj[field + "_last"]);
     const sameStoreDeGrowthCount = sameStoreDeGrowth.length;
 
     const actual_data = type === "all" ? allStore : sameStore;
@@ -137,12 +153,23 @@ const InSight = () => {
     return (
         <>
             <div className="container mx-auto p-4">
-                <h1 className="mb-8 mt-4 text-center text-base  lg:text-xl font-bold capitalize text-teal-500">
-                    {type} Store <span className="uppercase text-rose-500">{field}</span>{" "}
-                    and <span className="uppercase text-rose-500">{field} Growth </span>{" "}
-                    info for {data[0].month} [ 1 - {data[0].day} ]
-                </h1>
-        
+
+                <div className="flex items-center justify-between mb-8 mt-4 " >
+                    <h1 className="text-center text-base  lg:text-xl font-bold capitalize text-teal-500">
+                        {type} Store <span className="uppercase text-rose-500">{field}</span>{" "}
+                        and <span className="uppercase text-rose-500">{field} Growth </span>{" "}
+                        info for {data[0].month} [ 1 - {data[0].day} ]
+                    </h1>
+
+                    <button
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                        onClick={downloadOutletsCollection}
+                    >
+                        Download Full Data
+                    </button>
+
+                </div>
+
                 <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-4">
                     <div className="mx-1 block w-full cursor-pointer rounded-lg border border-gray-200 bg-white p-5 shadow hover:bg-gray-100">
                         <h5 className="mb-1 text-sm font-bold uppercase tracking-tight text-gray-600 lg:text-base">
@@ -165,7 +192,7 @@ const InSight = () => {
                             } font-medium mb-1 text-lg  text-gray-950 lg:text-2xl`}>
                             {calculateGrowthPercentage(totalThis, totalLast)} %
                         </p>
-                        
+
                     </div>
                     <div className="mx-1 block w-full cursor-pointer rounded-lg border border-gray-200 bg-white p-5 shadow hover:bg-gray-100">
                         <h5 className="mb-1 text-sm font-bold uppercase tracking-tight text-gray-600 lg:text-base">
@@ -195,7 +222,7 @@ const InSight = () => {
                             Total Stores in Growth ({field})
                         </h5>
                         <p className="mb-1 text-lg font-semibold text-gray-950 lg:text-2xl">
-                            {numFor.format( type == "all" ? allStoreGrowthCount : sameStoreGrowthCount)}
+                            {numFor.format(type == "all" ? allStoreGrowthCount : sameStoreGrowthCount)}
                         </p>
                         {/* <p className="mb-1 text-xs font-semibold text-green-600">
                         {bestSellingProduct}
@@ -206,15 +233,15 @@ const InSight = () => {
                             Total Stores in Degrowth ({field})
                         </h5>
                         <p className="mb-1 text-lg font-semibold text-gray-950 lg:text-2xl">
-                            {numFor.format( type == "all" ? allStoreDeGrowthCount : sameStoreDeGrowthCount)}
+                            {numFor.format(type == "all" ? allStoreDeGrowthCount : sameStoreDeGrowthCount)}
                         </p>
                         {/* <p className="mb-1 text-xs font-semibold text-green-600">
                         {bestSellingProduct}
                     </p> */}
                     </div>
 
-                    
-                    
+
+
                 </div>
                 <div className="mb-4 flex flex-col-reverse gap-3 items-start justify-between md:flex-row md:items-center">
                     <div className="mr-4 flex flex-col items-start justify-center gap-2 md:flex-row md:items-center">

@@ -1,5 +1,7 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ZonalForm = () => {
     const api_url = import.meta.env.VITE_REACT_APP_API_URL;
@@ -39,10 +41,24 @@ const ZonalForm = () => {
             if (response.ok) {
                 const responseData = await response.json();
                 console.log(responseData);
+                toast.success("successful!", {
+                    position: toast.POSITION.TOP_RIGHT,
+                  });
+                
                 reset(); // Clear the form after successful submission
             } else {
                 console.log(response);
                 console.error('Failed to submit form');
+                toast.error("😢 there was a problem siging up!", {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                  });
             }
         } catch (error) {
             console.error(error);
@@ -151,7 +167,7 @@ const ZonalForm = () => {
                     </button>
                 </div>
             </form>
-
+            <ToastContainer />                   
         </div>
     );
 };

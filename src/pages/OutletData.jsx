@@ -4,6 +4,7 @@ import Card from "../components/Card";
 import { useParams } from "react-router-dom";
 import Loading from "../components/Loading";
 import SalesComparisonChart from "../components/SalesComparisonChart";
+import * as XLSX from "xlsx";
 // import DataTables from "../components/DataTables";
 
 import DataTable from "../components/DataTable";
@@ -95,6 +96,18 @@ const OutletData = () => {
   }, [selectedOutlets]);
 
   // new code starts here
+  
+  const downloadOutletsCollection = async () => {
+    try {
+
+        const worksheet = XLSX.utils.json_to_sheet(data);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "SPLY");
+        XLSX.writeFile(workbook, "data.xlsx");
+    } catch (error) {
+        console.error("Error downloading users collection:", error);
+    }
+};
 
   useEffect(() => {
     // Helper function to aggregate data for a specific category
@@ -240,7 +253,7 @@ const OutletData = () => {
             ))}
           </select>
         </div>
-        
+
       </div>
       <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-3">
         <Card
@@ -299,7 +312,14 @@ const OutletData = () => {
             </select>
           </div>
 
-          <div className="flex items-center justify-start gap-2">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            onClick={downloadOutletsCollection}
+          >
+            Download Full Data
+          </button>
+
+          {/* <div className="flex items-center justify-start gap-2">
             <h1>Mode:</h1>
             <select
               value={selectedMode}
@@ -310,7 +330,7 @@ const OutletData = () => {
               <option value="catm">SPLM</option>
         
             </select>
-          </div>
+          </div> */}
 
         </div>
 

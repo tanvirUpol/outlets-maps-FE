@@ -9,39 +9,44 @@ import { useState } from 'react'
 import logo from "../assets/logo.svg";
 
 const Navbar = () => {
-    const { logout } = useLogout()
-    const { user } = useAuthContext()
-    const [isOpen, setIsOpen] = useState(false);
+  const { logout } = useLogout()
+  const { user } = useAuthContext()
+  const [isOpen, setIsOpen] = useState(false);
 
-    const toggleDrawer = () => {
-        setIsOpen(!isOpen);
-    };
-
-
-
-    const handleClick = () => {
-        logout()
-        console.log("logged out");
-    }
+  const toggleDrawer = () => {
+    setIsOpen(!isOpen);
+  };
 
 
 
-    return (
-        <div className="font-roboto-slab shadow sm:mb-4">
-        <nav className="container max-w-[100rem] mx-auto px-3 py-3 flex justify-between items-center">
-          <NavLink to="/" className="flex items-center gap-2">
-            <img src={logo} width={32} />
-          </NavLink>
-  
-          <div className="flex justify-between gap-6 font-medium">
-            {!user ? (
-              <>
-                {/* <NavLink className="hover:text-teal-500" to="signup" >Sign up</NavLink> */}
-                <NavLink className="hover:text-teal-500" to="signin">
-                  Login
-                </NavLink>
-              </>
-            ) : (
+  const handleClick = () => {
+    logout()
+    console.log("logged out");
+  }
+
+
+
+  return (
+    <div className="font-roboto-slab shadow sm:mb-4">
+      <nav className="container max-w-[100rem] mx-auto px-3 py-3 flex justify-between items-center">
+        <NavLink to="/" className="flex items-center gap-2">
+          <img src={logo} width={32} />
+        </NavLink>
+
+        <div className="flex justify-between gap-6 font-medium">
+          {!user ? (
+            <>
+              {/* <NavLink className="hover:text-teal-500" to="signup" >Sign up</NavLink> */}
+              <NavLink className="hover:text-teal-500" to="signin">
+                Login
+              </NavLink>
+            </>
+          ) : (
+            <>
+              <NavLink className="hover:text-teal-500" to="profile">
+                Profile
+              </NavLink>
+
               <button
                 onClick={logout}
                 className="flex items-center gap-2 hover:text-teal-500"
@@ -49,10 +54,13 @@ const Navbar = () => {
                 <ArrowRightOnRectangleIcon width={20} />
                 <span>Logout</span>
               </button>
-            )}
-          </div>
-        </nav>
-      </div>
-    )
+            </>
+
+
+          )}
+        </div>
+      </nav>
+    </div>
+  )
 }
 export default Navbar
