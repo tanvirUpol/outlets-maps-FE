@@ -17,10 +17,12 @@ import InSight from './pages/InSight';
 import ZonalForm from './pages/ZonalForm';
 import Profile from './pages/Profile';
 import ChangePassword from './pages/ChangePassword';
+import Verify from './pages/Verify';
 
 
 function App() {
   const { user } = useAuthContext();
+  const vuser =   JSON.parse(localStorage.getItem('verify'));
   const { pathname } = useLocation();
   const role = user ? user.role : '';
   const [isLoading, setLoading] = useState(true);
@@ -46,7 +48,11 @@ function App() {
             <Routes>
               <Route
                 path="/login"
-                element={!user ? <Login /> : <Navigate to="/" />}
+                element={!user  ? <Login /> : <Navigate to="/" />}
+              />
+              <Route
+                path="/verify"
+                element={!vuser && !user ? <Login /> : vuser && !user ? <Verify /> :  <Navigate to="/" />}
               />
               <Route
                 path="/"

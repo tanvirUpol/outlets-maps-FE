@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { ArrowRightOnRectangleIcon } from "@heroicons/react/24/solid";
+import {  UserCircleIcon } from "@heroicons/react/24/outline";
 
 import { useLogout } from '../hooks/useLogout'
 import { useAuthContext } from '../hooks/useAuthContext'
@@ -43,8 +44,9 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <NavLink className="hover:text-teal-500" to="profile">
-                Profile
+              <NavLink className="flex items-center gap-2 hover:text-teal-500" to="profile">
+                <UserCircleIcon width={20}/>
+               <span>Profile</span> 
               </NavLink>
 
               <button

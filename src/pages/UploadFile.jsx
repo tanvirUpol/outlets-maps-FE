@@ -186,7 +186,7 @@ const UploadFile = () => {
       }
       const headers = json[0];
       const actualHeaders = Object.keys(headers).map(header => header.trim());
-      // console.log(actualHeaders);
+      console.log(actualHeaders);
       let isCorrectFormat = false;
       console.log(file.name);
       if (file.name === "outletSum.xlsx") {

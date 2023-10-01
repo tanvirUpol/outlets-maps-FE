@@ -1,22 +1,22 @@
 import { useState } from 'react'
+import { useAuthContext } from './useAuthContext'
 
-
-export const useLogin = () => {
+export const useVerify = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
-  // const { dispatch } = useAuthContext()
+  const { dispatch } = useAuthContext()
   const api_url = import.meta.env.VITE_REACT_APP_API_URL;
 
-  const login = async (email, password) => {
-    // console.log(staffId,password); 
+  const verify = async (email, verificationCode) => {
+    console.log(email, verificationCode); 
     setIsLoading(true)
     setError(null)
 
-    const response = await fetch(`${api_url}/user/login`, {
+    const response = await fetch(`${api_url}/user/verify`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       
-      body: JSON.stringify( {email, password})
+      body: JSON.stringify( {email, verificationCode})
       
     })
 
@@ -27,24 +27,18 @@ export const useLogin = () => {
     if (!response.ok) {
       setIsLoading(false)
       setError(json.error)
-      return false
     }
     if (response.ok) {
       // save the user to local storage
-      localStorage.setItem('verify', JSON.stringify(json))
+      localStorage.setItem('user', JSON.stringify(json))
 
-      
-      
       // update the auth context
-      // dispatch({ type: 'LOGIN', payload: json })
+      dispatch({ type: 'LOGIN', payload: json })
 
       // update loading state
       setIsLoading(false)
-      
-      
-
     }
   }
 
-  return { login, isLoading, error }
+  return { verify, isLoading, error }
 }

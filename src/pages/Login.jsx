@@ -3,22 +3,62 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 // assets
 import logo from "../assets/logo.svg";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-    const { login, error, isLoading } = useLogin()
+    // const { login, error, isLoading } = useLogin()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [showPassword, setShowPassword] = useState(false);
+    const [error, setError] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
+    const api_url = import.meta.env.VITE_REACT_APP_API_URL;
+    const navigate = useNavigate();
+
 
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
 
-    const onSubmit = async (data) => {
-        await login(data.email, data.password)
+    const loginUser = async (email, password) => {
+        setIsLoading(true)
+        setError(null)
+    
+        const response = await fetch(`${api_url}/user/login`, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          
+          body: JSON.stringify( {email, password})
+          
+        })
+
+        const json = await response.json()
+    
+        if (!response.ok) {
+          setIsLoading(false)
+          setError(json.error)
+          return false
+        }
+        if (response.ok) {
+          // save the user to local storage
+          localStorage.setItem('verify', JSON.stringify(json))
+    
+          // update loading state
+          setIsLoading(false)
+          navigate("/verify");
+          
+    
+        }
+      }
+    
+
+    const onSubmit = (data) => {
+     loginUser(data.email, data.password)
+      
+
     }
 
-    console.log(isLoading);
+    // console.log(isLoading);
 
     return (
         <>
