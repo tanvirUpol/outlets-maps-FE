@@ -10,8 +10,6 @@ const Verify = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const vuser =   JSON.parse(localStorage.getItem('verify'));
 
-
-
     const onSubmit = async (data) => {
         await verify(vuser.email, data.vcode)
     }
