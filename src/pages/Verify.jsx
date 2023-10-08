@@ -34,6 +34,7 @@ const Verify = () => {
                                 
                                  Verification Code
                             </h1>
+                            <p className="text-rose-600" >* please check your spam folder as well</p>
                             <form
                                 className="space-y-4 md:space-y-6"
                                 onSubmit={handleSubmit(onSubmit)}
@@ -55,6 +56,7 @@ const Verify = () => {
                                         {...register("vcode", { required: true })}
                                     />
                                 </div>
+                                
                                 {errors.vcode?.type === "required" && (
                                     <small className="m-0 p-0 text-rose-500">
                                         *Verification code is required
