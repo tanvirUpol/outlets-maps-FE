@@ -12,22 +12,25 @@ const Map = ({data,startLat,startLng}) => {
 
           if(profitable === "Profitable" && format === "Franchise")
           {
-            return greenCirIcon;
+            
+            return greenTriIcon;
           }
           else if(profitable === "Loss-making" && format === "Franchise")
           {
-            return redCirIcon;
+            return redTriIcon;
           }
           else if(profitable === "Profitable" && format === "Own Outlet")
           {
-            return greenTriIcon;
+            return greenCirIcon;
           }
           else if(profitable === "Loss-making" && format === "Own Outlet")
           {
-            return redTriIcon;
+            
+            return redCirIcon;
           }
           else {
             return myIconBad
+            
           }
       
      }
