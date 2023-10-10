@@ -164,7 +164,7 @@ const Home = () => {
 
   localStorage.setItem('outlets', JSON.stringify(uniqueOutlets))
 
-  console.log(uniqueOutlets);
+  // console.log(uniqueOutlets);
 
 
   // add FF growth
