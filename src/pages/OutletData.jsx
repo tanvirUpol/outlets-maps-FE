@@ -16,6 +16,7 @@ const OutletData = () => {
   const api_url = import.meta.env.VITE_REACT_APP_API_URL;
   const { user } = useAuthContext();
   const { id } = useParams();
+  console.log(id);
   const [selectedMetric, setSelectedMetric] = useState("sales");
   const [masterCategoryData, setMasterCategoryData] = useState([]);
   const [cat1Data, setCat1Data] = useState([]);
@@ -45,43 +46,8 @@ const OutletData = () => {
     return trimmedObj;
   };
 
-  // Fetch data from the API
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch(`${api_url}/${selectedMode}/${id}`, {
-  //         headers: {
-  //           Authorization: `'Bearer ${user.token}`,
-  //         },
-  //       });
-  //       const json = await response.json();
 
-  //       if (response.ok) {
-  //         // console.log(json);
-  //         const trimmedData = json.map((item) => trimObjectValues(item));
-
-  //         const totalSales = trimmedData?.reduce(
-  //           (sum, item) => sum + item["sales_this"],
-  //           0
-  //         );
-
-  //         // Update the data array with the sales_contribution key
-  //         const updatedData = trimmedData.map(item => ({
-  //           ...item,
-  //           sales_contribution: item.sales_this / totalSales,
-  //         }));
-  //         console.log(updatedData);
-  //         setData(updatedData);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   };
-  //   if (user) {
-  //     fetchData();
-  //   }
-  // }, [selectedMode]);
-
+ 
   useEffect(() => {
     setData([])
     const fetchData = async () => {
@@ -93,7 +59,10 @@ const OutletData = () => {
         });
         const json = await response.json();
 
+        console.log(json);
+
         if (response.ok) {
+          console.log("ok");
           const trimmedData = json.outlet?.map((item) => trimObjectValues(item));
           const trimmedBenchData = json.benchmarkOutlet?.map((item) => trimObjectValues(item));
 
