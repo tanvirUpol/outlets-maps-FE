@@ -16,16 +16,16 @@ const OutletData = () => {
   const api_url = import.meta.env.VITE_REACT_APP_API_URL;
   const { user } = useAuthContext();
   const { id } = useParams();
-  console.log(id);
   const [selectedMetric, setSelectedMetric] = useState("sales");
   const [masterCategoryData, setMasterCategoryData] = useState([]);
   const [cat1Data, setCat1Data] = useState([]);
   const [outlets, setOutlets] = useState([]);
   const [selectedOutlets, setSelectedOutlets] = useState(id);
   const [selectedMode, setSelectedMode] = useState("cat");
-
+  
   const [bestSellingProduct, setBestSellingProduct] = useState("");
   const [maxSales, setMaxSales] = useState(-Infinity);
+  console.log(selectedOutlets);
 
   // console.log(user);
 
@@ -49,7 +49,7 @@ const OutletData = () => {
 
  
   useEffect(() => {
-    // setData([])
+    setData([])
     const fetchData = async () => {
       try {
         const response = await fetch(`${api_url}/cat/${selectedOutlets}`, {
@@ -62,7 +62,7 @@ const OutletData = () => {
         console.log(json);
 
         if (response.ok) {
-          console.log("ok");
+          // console.log("ok");
           const trimmedData = json.outlet?.map((item) => trimObjectValues(item));
           const trimmedBenchData = json.benchmarkOutlet?.map((item) => trimObjectValues(item));
 
@@ -96,7 +96,7 @@ const OutletData = () => {
           // );
 
           // console.log(totalSalesC,totalBenchSalesC);
-          // console.log(updatedData);
+          console.log("updated ",updatedData);
           setData(updatedData);
           setBenchData(updatedBenchData)
           setMaxSales(-Infinity);
