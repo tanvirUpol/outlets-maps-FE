@@ -8,9 +8,11 @@ import * as XLSX from "xlsx";
 // import DataTables from "../components/DataTables";
 
 import DataTable from "../components/DataTable";
+import DataTableAlt from "../components/DataTableAlt";
 
 const OutletData = () => {
   const [data, setData] = useState([]);
+  const [benchData, setBenchData] = useState([]);
   const api_url = import.meta.env.VITE_REACT_APP_API_URL;
   const { user } = useAuthContext();
   const { id } = useParams();
@@ -44,32 +46,44 @@ const OutletData = () => {
   };
 
   // Fetch data from the API
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${api_url}/${selectedMode}/${id}`, {
-          headers: {
-            Authorization: `'Bearer ${user.token}`,
-          },
-        });
-        const json = await response.json();
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(`${api_url}/${selectedMode}/${id}`, {
+  //         headers: {
+  //           Authorization: `'Bearer ${user.token}`,
+  //         },
+  //       });
+  //       const json = await response.json();
 
-        if (response.ok) {
-          console.log(json);
-          const trimmedData = json.map((item) => trimObjectValues(item));
-          console.log(trimmedData);
-          setData(trimmedData);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    if (user) {
-      fetchData();
-    }
-  }, [selectedMode]);
+  //       if (response.ok) {
+  //         // console.log(json);
+  //         const trimmedData = json.map((item) => trimObjectValues(item));
+
+  //         const totalSales = trimmedData?.reduce(
+  //           (sum, item) => sum + item["sales_this"],
+  //           0
+  //         );
+
+  //         // Update the data array with the sales_contribution key
+  //         const updatedData = trimmedData.map(item => ({
+  //           ...item,
+  //           sales_contribution: item.sales_this / totalSales,
+  //         }));
+  //         console.log(updatedData);
+  //         setData(updatedData);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   };
+  //   if (user) {
+  //     fetchData();
+  //   }
+  // }, [selectedMode]);
 
   useEffect(() => {
+    setData([])
     const fetchData = async () => {
       try {
         const response = await fetch(`${api_url}/cat/${selectedOutlets}`, {
@@ -80,10 +94,42 @@ const OutletData = () => {
         const json = await response.json();
 
         if (response.ok) {
-          console.log(json);
-          const trimmedData = json.map((item) => trimObjectValues(item));
-          console.log(trimmedData);
-          setData(trimmedData);
+          const trimmedData = json.outlet.map((item) => trimObjectValues(item));
+          const trimmedBenchData = json.benchmarkOutlet.map((item) => trimObjectValues(item));
+
+          const totalSales = trimmedData?.reduce(
+            (sum, item) => sum + item["sales_this"],
+            0
+          );
+          const totalBenchSales = trimmedBenchData?.reduce(
+            (sum, item) => sum + item["sales_this"],
+            0
+          );
+
+          // Update the data array with the sales_contribution key
+          const updatedData = trimmedData.map(item => ({
+            ...item,
+            sales_contribution: item.sales_this / totalSales,
+          }));
+          const updatedBenchData = trimmedBenchData.map(item => ({
+            ...item,
+            sales_contribution: item.sales_this / totalBenchSales,
+          }));
+
+
+          // const totalSalesC = updatedData?.reduce(
+          //   (sum, item) => sum + item["sales_contribution"],
+          //   0
+          // );
+          // const totalBenchSalesC = updatedBenchData?.reduce(
+          //   (sum, item) => sum + item["sales_contribution"],
+          //   0
+          // );
+
+          // console.log(totalSalesC,totalBenchSalesC);
+          // console.log(updatedData);
+          setData(updatedData);
+          setBenchData(updatedBenchData)
           setMaxSales(-Infinity);
         }
       } catch (error) {
@@ -108,6 +154,29 @@ const OutletData = () => {
         console.error("Error downloading users collection:", error);
     }
 };
+
+
+
+  // new code end
+
+  const totalSalesThis = data?.reduce(
+    (sum, item) => sum + item["sales_this"],
+    0
+  );
+  const totalSalesLast = data?.reduce(
+    (sum, item) => sum + item["sales_last"],
+    0
+  );
+
+  const totalPosGPVThis = data?.reduce(
+    (sum, item) => sum + item["pos_gpv_this"],
+    0
+  );
+  const totalPosGPVLast = data?.reduce(
+    (sum, item) => sum + item["pos_gpv_last"],
+    0
+  );
+
 
   useEffect(() => {
     // Helper function to aggregate data for a specific category
@@ -160,31 +229,6 @@ const OutletData = () => {
     setCat1Data(cat1Aggregated);
   }, [data]);
 
-  // new code end
-
-  const totalSalesThis = data?.reduce(
-    (sum, item) => sum + item["sales_this"],
-    0
-  );
-  const totalSalesLast = data?.reduce(
-    (sum, item) => sum + item["sales_last"],
-    0
-  );
-
-  const totalPosGPVThis = data?.reduce(
-    (sum, item) => sum + item["pos_gpv_this"],
-    0
-  );
-  const totalPosGPVLast = data?.reduce(
-    (sum, item) => sum + item["pos_gpv_last"],
-    0
-  );
-
-  const averageBasketSizeThis =
-    data?.reduce((sum, item) => sum + item["bs_this"], 0) / data.length;
-
-  const averageBasketSizeLast =
-    data?.reduce((sum, item) => sum + item["bs_last"], 0) / data.length;
 
   const calculateGrowthPercentage = (currentValue, lastValue) => {
     if (lastValue !== 0) {
@@ -225,6 +269,7 @@ const OutletData = () => {
     }
   }, []);
 
+
   // console.log(selectedOutlets);
 
   if (!data.length > 0) {
@@ -236,7 +281,7 @@ const OutletData = () => {
       <div className="mb-4 flex items-center justify-between">
         {data && (
           <h1 className="text-lg font-semibold md:text-xl">
-            {data[0].name} Data
+            {data[0].name} - {data[0].format}
           </h1>
         )}
         <div className="flex items-center justify-start gap-2">
@@ -350,9 +395,26 @@ const OutletData = () => {
           data={data}
           selectedMetric={selectedMetric}
         />
+
+
+
+        {/* Benchmark */}
+        <h1 className="mt-7 text-xl font-bold text-teal-600">Benchmark Table</h1>
+        <DataTableAlt
+          data={data}
+          benchData={benchData}
+        />
+        {/* <h1 className="mt-5 text-xl  font-bold text-green-600">Growth Table</h1> */}
+        {/* <DataTableAlt
+          growth="growth"
+          masterCategoryData={masterCategoryData}
+          cat1Data={cat1Data}
+          data={data}
+          selectedMetric={selectedMetric}
+        /> */}
       </div>
 
-      <SalesComparisonChart selectedMetric={selectedMetric} data={data} />
+      {/* <SalesComparisonChart selectedMetric={selectedMetric} data={data} /> */}
     </div>
   );
 };

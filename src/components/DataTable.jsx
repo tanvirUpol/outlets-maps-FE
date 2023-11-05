@@ -7,6 +7,8 @@ const DataTable = ({ masterCategoryData, cat1Data, data, selectedMetric, growth 
 
   const [expandedMaster, setExpandedMaster] = useState("");
   const [expandedCat1, setExpandedCat1] = useState("");
+  const [sortOrder, setSortOrder] = useState("asc");
+  const [sortBy, setSortBy] = useState(null);
 
 
   const toggleMaster = (masterCategory) => {
@@ -34,6 +36,30 @@ const DataTable = ({ masterCategoryData, cat1Data, data, selectedMetric, growth 
     }
     return 0;
   };
+
+  const toggleSort = (column) => {
+    if (column === sortBy) {
+      // If the same column is clicked, toggle the sorting direction
+      console.log(column);
+      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    } else {
+      // If a new column is clicked, set it as the sorting column and default to ascending order
+      setSortBy(column);
+      setSortOrder('asc');
+    }
+  };
+
+  
+  const sortedOutlets = data?.slice()
+  .sort((a, b) => {
+      const aValue = a[sortBy];
+      const bValue = b[sortBy];
+      if (sortOrder === "asc") {
+          return aValue - bValue;
+      } else {
+          return bValue - aValue;
+      }
+  });
 
 
   const numFor = Intl.NumberFormat("en-US");
@@ -168,13 +194,13 @@ const DataTable = ({ masterCategoryData, cat1Data, data, selectedMetric, growth 
                                                 <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white">
                                                   {selectedMetric} Growth %
                                                 </th>
-                                                <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white">
-                                                  Format {selectedMetric} GR %
+                                                <th onClick={() => toggleSort("format_"+ selectedMetric + "_gr")} className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white cursor-pointer">
+                                                  Benchmark {selectedMetric} % {sortBy === ("format_"+ selectedMetric + "_gr") && (sortOrder === 'asc' ? '▲' : '▼')}
                                                 </th>
                                               </tr>
                                             </thead>
                                             <tbody>
-                                              {data.map((item, index) => (
+                                              {sortedOutlets.map((item, index) => (
                                                 <React.Fragment key={index}>
                                                   {item.master_category ===
                                                     expandedMaster && (

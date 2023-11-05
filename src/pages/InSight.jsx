@@ -296,32 +296,40 @@ const InSight = () => {
                     </thead>
                     <tbody>
                         {sortedOutlets.map((outlet, index) => (
-                            <tr
-                                key={index}
-                                className={`cursor-pointer text-sm font-medium hover:bg-teal-100 ${index % 2 === 0 ? "bg-teal-50" : "bg-white"
-                                    }`}
-                            >
-                                <td className="p-3 hover:underline">
-                                    <Link to={`/outlet/${outlet.outlet_code}`}>
-                                        {outlet.outlet_code}
-                                    </Link>
-                                </td>
-                                <td className="p-3">{outlet.name}</td>
-                                <td className="p-3">
-                                    {numFor.format(outlet[field + "_this"].toFixed(2))}
-                                </td>
-                                <td className="p-3">
-                                    {numFor.format(outlet[field + "_last"].toFixed(2))}
-                                </td>
-                                <td
-                                    className={`p-3  ${outlet[field + "_growth"] < 0
-                                        ? "text-rose-500"
-                                        : "text-green-600"
-                                        } font-medium`}
-                                >
-                                    {outlet[field + "_growth"]}
-                                </td>
-                            </tr>
+                            <React.Fragment key={index}>
+
+                                {outlet[field + "_this"] !== 0 &&
+                                    <tr
+                                        key={index}
+                                        className={`text-sm font-medium hover:bg-teal-100 ${index % 2 === 0 ? "bg-teal-50" : "bg-white"
+                                            }`}
+                                    >
+                                        <td className="p-3 hover:underline cursor-pointer ">
+                                            <Link className="flex justify-start items-center gap-2 underline text-blue-500" to={`/outlet/${outlet.outlet_code}`}>
+                                                {/* <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                                                </svg> */}
+                                                <span>{outlet.outlet_code}</span>
+                                            </Link>
+                                        </td>
+                                        <td className="p-3">{outlet.name}</td>
+                                        <td className="p-3">
+                                            {numFor.format(outlet[field + "_this"].toFixed(2))}
+                                        </td>
+                                        <td className="p-3">
+                                            {numFor.format(outlet[field + "_last"].toFixed(2))}
+                                        </td>
+                                        <td
+                                            className={`p-3  ${outlet[field + "_growth"] < 0
+                                                ? "text-rose-500"
+                                                : "text-green-600"
+                                                } font-medium`}
+                                        >
+                                            {outlet[field + "_growth"]}
+                                        </td>
+                                    </tr>}
+
+                            </React.Fragment>
                         ))}
                     </tbody>
                 </table>
