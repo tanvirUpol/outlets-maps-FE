@@ -49,7 +49,7 @@ const OutletData = () => {
 
  
   useEffect(() => {
-    setData([])
+    // setData([])
     const fetchData = async () => {
       try {
         const response = await fetch(`${api_url}/cat/${selectedOutlets}`, {
