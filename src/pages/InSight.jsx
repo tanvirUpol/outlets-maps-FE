@@ -295,7 +295,7 @@ const InSight = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {sortedOutlets.map((outlet, index) => (
+                        {sortedOutlets?.map((outlet, index) => (
                             <React.Fragment key={index}>
 
                                 {outlet[field + "_this"] !== 0 &&
