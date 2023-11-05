@@ -63,7 +63,7 @@ const OutletData = () => {
 
         if (response.ok) {
           // console.log("ok");
-          const trimmedData = json.outlet?.map((item) => trimObjectValues(item));
+          const trimmedData = json?.outlet?.map((item) => trimObjectValues(item));
           const trimmedBenchData = json.benchmarkOutlet?.map((item) => trimObjectValues(item));
 
           const totalSales = trimmedData?.reduce(
@@ -74,6 +74,8 @@ const OutletData = () => {
             (sum, item) => sum + item["sales_this"],
             0
           );
+
+          console.log("trimed", trimmedData);
 
           // Update the data array with the sales_contribution key
           const updatedData = trimmedData?.map(item => ({
