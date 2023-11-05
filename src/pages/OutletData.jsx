@@ -151,7 +151,7 @@ const OutletData = () => {
     // Helper function to aggregate data for a specific category
     const aggregateData = (category) => {
       const aggregatedData = {};
-      data.forEach((item) => {
+      data?.forEach((item) => {
         const categoryValue = item[category];
         if (!aggregatedData[categoryValue]) {
           aggregatedData[categoryValue] = { ...item };
@@ -241,7 +241,7 @@ const OutletData = () => {
 
   // console.log(selectedOutlets);
 
-  if ( data && !data.length > 0) {
+  if (!data?.length > 0) {
     return <Loading />;
   }
 
