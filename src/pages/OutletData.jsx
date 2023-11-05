@@ -239,7 +239,7 @@ const OutletData = () => {
   }, []);
 
 
-  // console.log(selectedOutlets);
+  console.log(data);
 
   if (!data?.length > 0) {
     return <Loading />;
