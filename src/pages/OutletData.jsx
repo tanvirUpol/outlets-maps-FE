@@ -241,7 +241,7 @@ const OutletData = () => {
 
   // console.log(selectedOutlets);
 
-  if (!data?.length > 0) {
+  if ( data && !data.length > 0) {
     return <Loading />;
   }
 
