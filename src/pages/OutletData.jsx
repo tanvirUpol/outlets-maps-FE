@@ -94,8 +94,8 @@ const OutletData = () => {
         const json = await response.json();
 
         if (response.ok) {
-          const trimmedData = json.outlet.map((item) => trimObjectValues(item));
-          const trimmedBenchData = json.benchmarkOutlet.map((item) => trimObjectValues(item));
+          const trimmedData = json.outlet?.map((item) => trimObjectValues(item));
+          const trimmedBenchData = json.benchmarkOutlet?.map((item) => trimObjectValues(item));
 
           const totalSales = trimmedData?.reduce(
             (sum, item) => sum + item["sales_this"],
@@ -107,11 +107,11 @@ const OutletData = () => {
           );
 
           // Update the data array with the sales_contribution key
-          const updatedData = trimmedData.map(item => ({
+          const updatedData = trimmedData?.map(item => ({
             ...item,
             sales_contribution: item.sales_this / totalSales,
           }));
-          const updatedBenchData = trimmedBenchData.map(item => ({
+          const updatedBenchData = trimmedBenchData?.map(item => ({
             ...item,
             sales_contribution: item.sales_this / totalBenchSales,
           }));
@@ -210,7 +210,7 @@ const OutletData = () => {
 
     // Aggregate data for 'Master Category'
     const masterCategoryAggregated = aggregateData("master_category");
-    const filteredMasterCategoryData = masterCategoryAggregated.map((item) => {
+    const filteredMasterCategoryData = masterCategoryAggregated?.map((item) => {
       const { cat_1, cat_3, ...rest } = item;
       return { ...rest };
     });
@@ -218,7 +218,7 @@ const OutletData = () => {
 
     // Aggregate data for 'CAT_3'
     const cat3Aggregated = aggregateData("cat_3");
-    const filteredCat1Data = cat3Aggregated.map((item) => {
+    const filteredCat1Data = cat3Aggregated?.map((item) => {
       const { cat_3, ...rest } = item;
       return { ...rest };
     });
@@ -276,6 +276,8 @@ const OutletData = () => {
     return <Loading />;
   }
 
+  console.log(data);
+
   return (
     <div className="container mx-auto p-4">
       <div className="mb-4 flex items-center justify-between">
@@ -291,7 +293,7 @@ const OutletData = () => {
             onChange={(e) => setSelectedOutlets(e.target.value)}
             className="block w-32 rounded-lg border border-gray-300 bg-gray-50 p-2 text-sm font-medium text-gray-900 focus:border-blue-500  focus:ring-blue-500 md:w-44 md:p-3"
           >
-            {outlets.map((outlet) => (
+            {outlets?.map((outlet) => (
               <option key={outlet} value={outlet}>
                 {outlet}
               </option>
