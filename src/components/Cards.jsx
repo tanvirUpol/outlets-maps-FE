@@ -285,7 +285,7 @@ const Cards = ({ filteredData }) => {
 ]
 
 
-  console.log(customSameStores);
+  // console.log(customSameStores);
 
 
   const sameStore = filteredData.filter((obj)=> customSameStores.includes(obj["outlet_code"]) )
@@ -515,20 +515,20 @@ const Cards = ({ filteredData }) => {
         path={"/insight/gpv-all"}
       />
 
-      <Card
+      {/* <Card
         title={"Same Store GPV"}
         mainData={sumGPVThisSameStore}
         diff={SameGPVDiff}
         percentage={2}
         path={"/insight/gpv-same"}
-      />
-      {/* <Card
+      /> */}
+      <Card
         title={"Same Store GPV"}
         mainData={sumGPVThisSameStore}
         diff={SameGPVDiff}
         percentage={SameGPVDiffPercentage}
         path={"/insight/gpv-same"}
-      /> */}
+      />
       {/* <Card
         title={"All Store"}
         mainData={allStoreCount}
