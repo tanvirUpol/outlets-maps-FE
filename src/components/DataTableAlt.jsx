@@ -2,14 +2,21 @@ import React, { useEffect, useState } from "react";
 import Search from "./Search";
 
 
-const DataTableAlt = ({ data, benchData }) => {
-    // console.log(benchData);
+const DataTableAlt = ({ data, benchData, allData }) => {
+    // console.log(data);
 
     const [sortOrder, setSortOrder] = useState("desc");
     const [sortBy, setSortBy] = useState(null);
     const [customData, setCustomData] = useState([])
     // const [customBenchData, setCustomBenchData] = useState([])
     const [searchResults, setSearchResults] = useState([]);
+
+    console.log("data", data);
+    console.log("all-data", allData);
+
+
+
+
 
     useEffect(() => {
         const updatedData = data.map(item => {
@@ -19,6 +26,8 @@ const DataTableAlt = ({ data, benchData }) => {
                 gp_percent: gp_percent ? gp_percent : 0,
             }
         });
+
+
 
         const updatedBenchData = benchData.map(item => {
             const gp_percent = item.pos_gpv_this / item.sales_this
@@ -55,7 +64,7 @@ const DataTableAlt = ({ data, benchData }) => {
 
             for (let i = 0; i < arr.length; i++) {
                 const currentObj = arr[i];
-                console.log(currentObj);
+                // console.log(currentObj);
                 if (sum + currentObj.sales_contribution <= 0.85) {
                     result.push(currentObj);
                     sum += currentObj.sales_contribution;
@@ -119,7 +128,52 @@ const DataTableAlt = ({ data, benchData }) => {
 
     // console.log(sortedOutlets);
 
+    const numFor = Intl.NumberFormat("en-US");
 
+    if (!allData?.length > 0) {
+        return <div class="border border-300 shadow rounded-md p-4 mt-4 w-full mx-auto">
+            <div class="animate-pulse flex space-x-4">
+            
+                <div class="flex-1 space-y-4 py-1">
+                    <div class="h-2 bg-slate-200 rounded"></div>
+                    <div class="h-2 bg-slate-200 rounded"></div>
+                    <div class="h-2 bg-slate-200 rounded"></div>
+                    <div class="h-2 bg-slate-200 rounded"></div>
+                    
+                </div>
+            </div>
+        </div>;
+    }
+
+
+    const getMaxGP = (cat3Name, format) => {
+        const filteredItems = allData.filter((item) => item.cat_3 === cat3Name && item.format === format);
+
+        if (filteredItems.length === 0) {
+            return 'Category not found';
+        }
+
+        const maxGP = filteredItems.reduce((maxItem, currentItem) => {
+            return currentItem.gp_percent > maxItem.gp_percent ? currentItem : maxItem;
+        });
+
+        return maxGP.gp_percent.toFixed(2);
+    };
+
+
+    const getMaxSC = (cat3Name, format) => {
+        const filteredItems = allData.filter((item) => item.cat_3 === cat3Name && item.format === format);
+
+        if (filteredItems.length === 0) {
+            return 'Category not found';
+        }
+
+        const maxSC = filteredItems.reduce((maxItem, currentItem) => {
+            return currentItem.sales_contribution > maxItem.sales_contribution ? currentItem : maxItem;
+        });
+
+        return maxSC.sales_contribution;
+    };
 
 
     return (<>
@@ -155,6 +209,11 @@ const DataTableAlt = ({ data, benchData }) => {
                             {sortBy === "sales_diff" &&
                                 (sortOrder === "asc" ? " ▲" : " ▼")}
                         </th>
+                        <th onClick={() => toggleSort("pos_gpv_this")} className="cursor-pointer px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white">
+                            GPV
+                            {sortBy === "pos_gpv_this" &&
+                                (sortOrder === "asc" ? " ▲" : " ▼")}
+                        </th>
                         <th onClick={() => toggleSort("gp_percent")} className="cursor-pointer px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white">
                             GP%
                             {sortBy === "gp_percent" &&
@@ -187,37 +246,55 @@ const DataTableAlt = ({ data, benchData }) => {
                                                 ? "text-rose-500"
                                                 : "text-green-600"
                                                 } font-medium`}>
-                                                {(item["sales_contribution"] * 100).toFixed(4)} %
+                                                {(item["sales_contribution"] * 100).toFixed(2)} %
                                             </td>
-                                            <td className={`p-3  ${item["bench_sales_contribution"] < 0
+                                            <td className={`p-3  ${item["sales_contribution"] < 0
                                                 ? "text-rose-500"
                                                 : "text-green-600"
                                                 } font-medium`}>
-                                                {(item["bench_sales_contribution"] * 100).toFixed(4)} %
+                                                {(getMaxSC(item.cat_3, item.format) * 100).toFixed(2)} %
                                             </td>
+                                            {/* <td className={`p-3  ${item["bench_sales_contribution"] < 0
+                                                ? "text-rose-500"
+                                                : "text-green-600"
+                                                } font-medium`}>
+                                                {(item["bench_sales_contribution"] * 100).toFixed(2)} %
+                                            </td> */}
                                             <td className={`p-3  ${item["sales_diff"] < 0
                                                 ? "text-rose-500"
                                                 : "text-green-600"
                                                 } font-medium`}>
-                                                {(item["sales_diff"] * 100).toFixed(4)}
+                                                {(item["sales_diff"] * 100).toFixed(2)}
+                                            </td>
+                                            <td className={`p-3  ${item["pos_gpv_this"] < 0
+                                                ? "text-rose-500"
+                                                : "text-green-600"
+                                                } font-medium`}>
+                                                {numFor.format((item["pos_gpv_this"] * 100).toFixed())}
                                             </td>
                                             <td className={`p-3  ${item["gp_percent"] < 0
                                                 ? "text-rose-500"
                                                 : "text-green-600"
                                                 } font-medium`}>
-                                                {(item["gp_percent"] * 100).toFixed(4)} %
+                                                {(item["gp_percent"] * 100).toFixed(2)} %
                                             </td>
+                                            {/* <td className={`p-3  ${item["bench_gp_percent"] < 0
+                                                ? "text-rose-500"
+                                                : "text-green-600"
+                                                } font-medium`}>
+                                                {(item["bench_gp_percent"] * 100).toFixed(2)} %
+                                            </td> */}
                                             <td className={`p-3  ${item["bench_gp_percent"] < 0
                                                 ? "text-rose-500"
                                                 : "text-green-600"
                                                 } font-medium`}>
-                                                {(item["bench_gp_percent"] * 100).toFixed(4)} %
+                                                {getMaxGP(item.cat_3, item.format)} %
                                             </td>
                                             <td className={`p-3  ${item["gp_diff"] < 0
                                                 ? "text-rose-500"
                                                 : "text-green-600"
                                                 } font-medium`}>
-                                                {(item["gp_diff"] * 100).toFixed(4)} %
+                                                {(item["gp_diff"] * 100).toFixed(2)} %
                                             </td>
 
                                         </tr>

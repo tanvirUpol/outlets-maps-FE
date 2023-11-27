@@ -3,7 +3,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import Card from "../components/Card";
 import { useParams } from "react-router-dom";
 import Loading from "../components/Loading";
-import SalesComparisonChart from "../components/SalesComparisonChart";
+// import SalesComparisonChart from "../components/SalesComparisonChart";
 import * as XLSX from "xlsx";
 // import DataTables from "../components/DataTables";
 
@@ -12,6 +12,7 @@ import DataTableAlt from "../components/DataTableAlt";
 
 const OutletData = () => {
   const [data, setData] = useState([]);
+  const [allData, setAllData] = useState([]);
   const [benchData, setBenchData] = useState([]);
   const api_url = import.meta.env.VITE_REACT_APP_API_URL;
   const { user } = useAuthContext();
@@ -59,7 +60,7 @@ const OutletData = () => {
         });
         const json = await response.json();
 
-        console.log(json);
+        // console.log(json);
 
         if (response.ok) {
           // console.log("ok");
@@ -75,7 +76,7 @@ const OutletData = () => {
             0
           );
 
-          console.log("trimed", trimmedData);
+          // console.log("trimed", trimmedData);
 
           // Update the data array with the sales_contribution key
           const updatedData = trimmedData?.map(item => ({
@@ -88,17 +89,8 @@ const OutletData = () => {
           }));
 
 
-          // const totalSalesC = updatedData?.reduce(
-          //   (sum, item) => sum + item["sales_contribution"],
-          //   0
-          // );
-          // const totalBenchSalesC = updatedBenchData?.reduce(
-          //   (sum, item) => sum + item["sales_contribution"],
-          //   0
-          // );
-
           // console.log(totalSalesC,totalBenchSalesC);
-          console.log("updated ",updatedData);
+          // console.log("updated ",updatedData);
           setData(updatedData);
           setBenchData(updatedBenchData)
           setMaxSales(-Infinity);
@@ -113,6 +105,32 @@ const OutletData = () => {
   }, [selectedOutlets]);
 
   // new code starts here
+
+
+      // fetch data all
+      useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`${api_url}/cat/all`, {
+                    headers: {
+                        Authorization: `'Bearer ${user.token}`,
+                    },
+                });
+                const json = await response.json();
+
+                if (response.ok) {
+                    console.log("all data json",json);
+                    setAllData(json);
+                    localStorage.setItem('all_data', json)
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+        if (user) {
+            fetchData();
+        }
+    }, []);
   
   const downloadOutletsCollection = async () => {
     try {
@@ -240,14 +258,15 @@ const OutletData = () => {
     }
   }, []);
 
+  
 
-  console.log(data);
+  // console.log(data);
 
   if (!data?.length > 0) {
     return <Loading />;
   }
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className="container mx-auto p-4">
@@ -376,6 +395,7 @@ const OutletData = () => {
         <DataTableAlt
           data={data}
           benchData={benchData}
+          allData={allData}
         />
         {/* <h1 className="mt-5 text-xl  font-bold text-green-600">Growth Table</h1> */}
         {/* <DataTableAlt

@@ -76,12 +76,8 @@ const InSight = () => {
     const allStoreDeGrowth = allStore?.filter((obj) => obj[field + "_this"] < obj[field + "_last"]);
     const allStoreDeGrowthCount = allStoreDeGrowth.length;
 
-    // const sameStore = data?.filter(
-    //     (obj) => obj["ff_this"] > 0 && obj["ff_last"] > 0
-    // );
-
     const customSameStores = [
-        [
+        
             "D017", "D055", "D065", "D070", "D072", "D089", "D091", "F032", "F038", "F040", "F056", "F064", "F075", "F118",
             "F124", "F130", "F160", "F095", "F174", "D004", "D031", "D059", "D061", "D075", "D076", "F071", "F083", "F114",
             "F115", "F143", "F159", "F166", "F189", "S001", "S002", "S003", "S006", "F245", "F255", "S007", "S008", "D047",
@@ -102,7 +98,7 @@ const InSight = () => {
             "F136", "F139", "F150", "F167", "F170", "F176", "F199", "F187", "F213", "D006", "D019", "D051", "D054", "D060",
             "D080", "D083", "F017", "F039", "F046", "F240", "F054", "F111", "D013", "D027", "F020", "F041", "F052", "F061",
             "F066", "F069", "F126"
-        ]
+        
     ]
     
     
