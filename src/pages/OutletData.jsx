@@ -334,10 +334,10 @@ const OutletData = () => {
 
       <div className="">
 
-        <div className="flex justify-between items-center" >
+        <div className="flex justify-between items-center gap-2" >
 
           <div className="flex items-center justify-start gap-2">
-            <h1>Filter By:</h1>
+            <h1>Filter:</h1>
             <select
               value={selectedMetric}
               onChange={(e) => setSelectedMetric(e.target.value)}
@@ -350,10 +350,10 @@ const OutletData = () => {
           </div>
 
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="bg-blue-500 hover:bg-blue-700 text-sm text-white font-bold py-2 px-4 rounded"
             onClick={downloadOutletsCollection}
           >
-            Download Full Data
+            Download Data
           </button>
 
           {/* <div className="flex items-center justify-start gap-2">

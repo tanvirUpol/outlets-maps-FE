@@ -133,7 +133,7 @@ const InSight = () => {
         setSearchResults(results);
     };
 
-    console.log(searchResults);
+    // console.log(searchResults);
 
     const sortedOutlets = (searchResults.length > 0 ? searchResults : actual_data)
         ?.slice()
@@ -187,7 +187,7 @@ const InSight = () => {
         <>
             <div className="container mx-auto p-4">
 
-                <div className="flex items-center justify-between mb-8 mt-4 " >
+                <div className="flex flex-col gap-4 md:flex-row items-center justify-between mb-8 mt-4 " >
                     <h1 className="text-center text-base  lg:text-xl font-bold capitalize text-teal-500">
                         {type} Store <span className="uppercase text-rose-500">{field}</span>{" "}
                         and <span className="uppercase text-rose-500">{field} Growth </span>{" "}
@@ -198,7 +198,7 @@ const InSight = () => {
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                         onClick={downloadOutletsCollection}
                     >
-                        Download Full Data
+                        Download Data
                     </button>
 
                 </div>
