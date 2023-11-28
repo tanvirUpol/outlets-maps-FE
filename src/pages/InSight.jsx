@@ -128,7 +128,7 @@ const InSight = () => {
         console.log(query);
 
         const results = (type === "all" ? allStore : sameStore).filter((outlet) =>
-            outlet.outlet_code.toLowerCase().includes(query.toLowerCase())
+            outlet.outlet_code.toLowerCase().includes(query.toLowerCase()) || outlet.name.toLowerCase().includes(query.toLowerCase())
         );
         setSearchResults(results);
     };
