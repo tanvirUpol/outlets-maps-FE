@@ -253,8 +253,10 @@ const OutletData = () => {
 
   useEffect(() => {
     const local_outlets = JSON.parse(localStorage.getItem("outlets"));
+    console.log(local_outlets);
     if (local_outlets) {
-      setOutlets(local_outlets);
+      const sortedOutlets = local_outlets.slice().sort();
+    setOutlets(sortedOutlets);
     }
   }, []);
 

@@ -106,10 +106,10 @@ const DataTable = ({ masterCategoryData, cat1Data, data, selectedMetric, growth 
                       </span>
                     </td>
                     <td className="p-3">
-                      {item[selectedMetric + "_this"].toFixed(2)}
+                      {numFor.format(item[selectedMetric + "_this"].toFixed(2))}
                     </td>
                     <td className="p-3">
-                      {item[selectedMetric + "_last"].toFixed(2)}
+                      {numFor.format(item[selectedMetric + "_last"].toFixed(2))}
                     </td>
                     <td className="p-3 text-green-600 font-medium">
                       {calculateGrowthPercentage(
@@ -159,14 +159,14 @@ const DataTable = ({ masterCategoryData, cat1Data, data, selectedMetric, growth 
                                         </span>
                                       </td>
                                       <td className="p-3">
-                                        {item[selectedMetric + "_this"].toFixed(
+                                        {numFor.format(item[selectedMetric + "_this"].toFixed(
                                           2
-                                        )}
+                                        ))}
                                       </td>
                                       <td className="p-3">
-                                        {item[selectedMetric + "_last"].toFixed(
+                                        {numFor.format(item[selectedMetric + "_last"].toFixed(
                                           2
-                                        )}
+                                        ))}
                                       </td>
                                       <td className={`p-3  ${item[selectedMetric + "_this"] <
                                         item[selectedMetric + "_last"] ? "text-rose-500" : "text-green-600"} font-medium`}>
@@ -209,18 +209,18 @@ const DataTable = ({ masterCategoryData, cat1Data, data, selectedMetric, growth 
                                                           {item.cat_3}
                                                         </td>
                                                         <td className="p-3">
-                                                          {item[
+                                                          {numFor.format(item[
                                                             selectedMetric + "_this"
-                                                          ].toFixed(2)}
+                                                          ].toFixed(2))}
                                                         </td>
                                                         <td className="p-3">
-                                                          {item[
+                                                          {numFor.format(item[
                                                             selectedMetric + "_last"
-                                                          ].toFixed(2)}
+                                                          ].toFixed(2))}
                                                         </td>
                                                         <td className={`p-3  ${item[selectedMetric + "_this"] <
                                                           item[selectedMetric + "_last"] ? "text-rose-500" : "text-green-600"} font-medium`}>
-                                                          {calculateGrowthPercentage(
+                                                          {numFor.format(calculateGrowthPercentage(
                                                             item[
                                                             selectedMetric +
                                                             "_this"
@@ -229,13 +229,13 @@ const DataTable = ({ masterCategoryData, cat1Data, data, selectedMetric, growth 
                                                             selectedMetric +
                                                             "_last"
                                                             ]
-                                                          )}
+                                                          ))}
                                                         </td>
                                                         <td className={`p-3  ${item["format_"+ selectedMetric + "_gr"] <
                                                           0? "text-rose-500" : "text-green-600"} font-medium`}>
-                                                          {item[
+                                                          {numFor.format(item[
                                                             "format_"+ selectedMetric + "_gr"
-                                                          ].toFixed(2)}
+                                                          ].toFixed(2))}
                                                         </td>
                                                       </tr>
                                                     )}
@@ -280,10 +280,10 @@ const DataTable = ({ masterCategoryData, cat1Data, data, selectedMetric, growth 
                       </span>
                     </td>
                     <td className="p-3">
-                      {item[selectedMetric + "_this"].toFixed(2)}
+                      {numFor.format(item[selectedMetric + "_this"].toFixed(2))}
                     </td>
                     <td className="p-3">
-                      {item[selectedMetric + "_last"].toFixed(2)}
+                      {numFor.format(item[selectedMetric + "_last"].toFixed(2))}
                     </td>
                     <td className="p-3 text-rose-600 font-medium">
                       {calculateGrowthPercentage(
@@ -333,14 +333,14 @@ const DataTable = ({ masterCategoryData, cat1Data, data, selectedMetric, growth 
                                         </span>
                                       </td>
                                       <td className="p-3">
-                                        {item[selectedMetric + "_this"].toFixed(
+                                        {numFor.format(item[selectedMetric + "_this"].toFixed(
                                           2
-                                        )}
+                                        ))}
                                       </td>
                                       <td className="p-3">
-                                        {item[selectedMetric + "_last"].toFixed(
+                                        {numFor.format(item[selectedMetric + "_last"].toFixed(
                                           2
-                                        )}
+                                        ))}
                                       </td>
                                       <td className={`p-3  ${item[selectedMetric + "_this"] <
                                         item[selectedMetric + "_last"] ? "text-rose-500" : "text-green-600"} font-medium`}>
@@ -383,18 +383,18 @@ const DataTable = ({ masterCategoryData, cat1Data, data, selectedMetric, growth 
                                                           {item.cat_3}
                                                         </td>
                                                         <td className="p-3">
-                                                          {item[
+                                                          {numFor.format(item[
                                                             selectedMetric + "_this"
-                                                          ].toFixed(2)}
+                                                          ].toFixed(2))}
                                                         </td>
                                                         <td className="p-3">
-                                                          {item[
+                                                          {numFor.format(item[
                                                             selectedMetric + "_last"
-                                                          ].toFixed(2)}
+                                                          ].toFixed(2))}
                                                         </td>
                                                         <td className={`p-3  ${item[selectedMetric + "_this"] <
                                                           item[selectedMetric + "_last"] ? "text-rose-500" : "text-green-600"} font-medium`}>
-                                                          {calculateGrowthPercentage(
+                                                          {numFor.format(calculateGrowthPercentage(
                                                             item[
                                                             selectedMetric +
                                                             "_this"
@@ -403,13 +403,13 @@ const DataTable = ({ masterCategoryData, cat1Data, data, selectedMetric, growth 
                                                             selectedMetric +
                                                             "_last"
                                                             ]
-                                                          )}
+                                                          ))}
                                                         </td>
                                                         <td className={`p-3  ${item["format_"+ selectedMetric + "_gr"] <
                                                           0? "text-rose-500" : "text-green-600"} font-medium`}>
-                                                          {item[
+                                                          {numFor.format(item[
                                                             "format_"+ selectedMetric + "_gr"
-                                                          ].toFixed(2)}
+                                                          ].toFixed(2))}
                                                         </td>
                                                       </tr>
                                                     )}
