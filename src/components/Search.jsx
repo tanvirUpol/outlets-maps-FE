@@ -33,7 +33,7 @@ const Search = ({ onSearch }) => {
                 <input
                     id="search"
                     type="text"
-                    placeholder="Search by Code"
+                    placeholder="Search by Code or Name"
                     className="w-full rounded border p-2 text-base shadow-sm"
                     value={searchText}
                     onChange={handleSearchChange}
