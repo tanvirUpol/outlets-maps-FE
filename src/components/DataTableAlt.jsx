@@ -225,17 +225,17 @@ const DataTableAlt = ({ data, benchData, allData }) => {
                                 (sortOrder === "asc" ? " ▲" : " ▼")}
                         </th>
                         <th onClick={() => toggleSort("pos_gpv_this")} className="cursor-pointer px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white">
-                            GPV
+                            GPV This
                             {sortBy === "pos_gpv_this" &&
                                 (sortOrder === "asc" ? " ▲" : " ▼")}
                         </th>
                         <th onClick={() => toggleSort("gpv_value")} className="cursor-pointer px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white">
-                            GPV Value
+                            GPV Growth Value
                             {sortBy === "gpv_value" &&
                                 (sortOrder === "asc" ? " ▲" : " ▼")}
                         </th>
                         <th onClick={() => toggleSort("gpv_growth")} className="cursor-pointer px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white">
-                            GPV Growth
+                            GPV Growth Percent
                             {sortBy === "gpv_growth" &&
                                 (sortOrder === "asc" ? " ▲" : " ▼")}
                         </th>
@@ -319,7 +319,7 @@ const DataTableAlt = ({ data, benchData, allData }) => {
                                                 ? "text-rose-500"
                                                 : "text-green-600"
                                                 } font-medium`}>
-                                                {(getMaxGPVPercent(item.cat_3, item.format)).toFixed(2)} 
+                                                {numFor.format((getMaxGPVPercent(item.cat_3, item.format)).toFixed(2))} 
                                             </td>
                                             <td className={`p-3  ${item["gp_percent"] < 0
                                                 ? "text-rose-500"
