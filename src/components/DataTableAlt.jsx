@@ -175,6 +175,21 @@ const DataTableAlt = ({ data, benchData, allData }) => {
         return maxSC.sales_contribution;
     };
 
+    
+    const getMaxGPVPercent = (cat3Name,format) => {
+        const filteredItems = allData.filter((item) => item.cat_3 === cat3Name && item.format === format);
+
+        if (filteredItems.length === 0) {
+            return 'Category not found';
+        }
+
+        const maxSC = filteredItems.reduce((maxItem, currentItem) => {
+            return currentItem.pos_gpv_value > maxItem.pos_gpv_value ? currentItem : maxItem;
+        });
+
+        return maxSC.pos_gpv_value;
+    }
+
 
     return (<>
         <div className="mr-4 w-full flex flex-col items-start justify-center gap-2 md:flex-row md:items-center my-4">
@@ -212,6 +227,22 @@ const DataTableAlt = ({ data, benchData, allData }) => {
                         <th onClick={() => toggleSort("pos_gpv_this")} className="cursor-pointer px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white">
                             GPV
                             {sortBy === "pos_gpv_this" &&
+                                (sortOrder === "asc" ? " ▲" : " ▼")}
+                        </th>
+                        <th onClick={() => toggleSort("gpv_value")} className="cursor-pointer px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white">
+                            GPV Value
+                            {sortBy === "gpv_value" &&
+                                (sortOrder === "asc" ? " ▲" : " ▼")}
+                        </th>
+                        <th onClick={() => toggleSort("gpv_growth")} className="cursor-pointer px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white">
+                            GPV Growth
+                            {sortBy === "gpv_growth" &&
+                                (sortOrder === "asc" ? " ▲" : " ▼")}
+                        </th>
+                       
+                        <th  className="cursor-pointer px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white">
+                            Bench GPV Value
+                            {sortBy === "gpv_growth" &&
                                 (sortOrder === "asc" ? " ▲" : " ▼")}
                         </th>
                         <th onClick={() => toggleSort("gp_percent")} className="cursor-pointer px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white">
@@ -271,6 +302,24 @@ const DataTableAlt = ({ data, benchData, allData }) => {
                                                 : "text-green-600"
                                                 } font-medium`}>
                                                 {numFor.format((item["pos_gpv_this"] * 100).toFixed())}
+                                            </td>
+                                            <td className={`p-3  ${item["gpv_value"] < 0
+                                                ? "text-rose-500"
+                                                : "text-green-600"
+                                                } font-medium`}>
+                                                {numFor.format((item["gpv_value"]).toFixed(2))} 
+                                            </td>
+                                            <td className={`p-3  ${item["gpv_growth"] < 0
+                                                ? "text-rose-500"
+                                                : "text-green-600"
+                                                } font-medium`}>
+                                                {numFor.format((item["gpv_growth"]).toFixed(2))} %
+                                            </td>
+                                            <td className={`p-3  ${(getMaxGPVPercent(item.cat_3, item.format)) < 0
+                                                ? "text-rose-500"
+                                                : "text-green-600"
+                                                } font-medium`}>
+                                                {(getMaxGPVPercent(item.cat_3, item.format)).toFixed(2)} 
                                             </td>
                                             <td className={`p-3  ${item["gp_percent"] < 0
                                                 ? "text-rose-500"

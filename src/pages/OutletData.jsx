@@ -29,6 +29,7 @@ const OutletData = () => {
   console.log(selectedOutlets);
 
   // console.log(user);
+  
 
   // Define a function to trim object
   const trimObjectValues = (obj) => {
@@ -47,6 +48,7 @@ const OutletData = () => {
     return trimmedObj;
   };
 
+  
 
  
   useEffect(() => {
@@ -82,6 +84,8 @@ const OutletData = () => {
           const updatedData = trimmedData?.map(item => ({
             ...item,
             sales_contribution: item.sales_this / totalSales,
+            gpv_growth: parseFloat(calculateGrowthPercentage(item.pos_gpv_this,item.pos_gpv_last)),
+            gpv_value: parseFloat(item.pos_gpv_this - item.pos_gpv_last)
           }));
           const updatedBenchData = trimmedBenchData?.map(item => ({
             ...item,
@@ -121,7 +125,7 @@ const OutletData = () => {
                 if (response.ok) {
                     console.log("all data json",json);
                     setAllData(json);
-                    localStorage.setItem('all_data', json)
+                    // localStorage.setItem('all_data', json)
                 }
             } catch (error) {
                 console.error("Error fetching data:", error);
