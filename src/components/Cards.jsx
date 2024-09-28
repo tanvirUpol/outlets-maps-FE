@@ -29,7 +29,7 @@ const Cards = ({ filteredData }) => {
     "D080", "D083", "F017", "F039", "F046", "F240", "F054", "F111", "D013", "D027", "F020", "F041", "F052", "F061",
     "F066", "F069", "F126"
 ]
-console.log(customSameStores.length);
+// console.log(customSameStores.length);
 
 
   // console.log(customSameStores);
